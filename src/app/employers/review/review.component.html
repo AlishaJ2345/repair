@@ -1,0 +1,122 @@
+<br>
+<mat-dialog-content class="form">
+
+  <div>
+    <form class="form-full-width">
+      <fieldset>
+        <h3 matTooltip="Details From Scanning QR Codes">Review Students Scanned</h3>
+        <div *ngIf="scanaction">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div>
+          <fieldset>
+
+            <div class="container" *ngIf="profile">
+              <div class="pic">
+                <img src="{{ profilePic }}" alt="profile pic">
+              </div>
+              <div class="profile">
+                Name: {{ profile[0]?.name }}<br>
+                Email: {{ profile[0]?.email }}<br>
+                University: {{ profile[0]?.uni }}<br>
+                Major: {{ profile[0]?.major }}<br>
+                Qualification: {{ profile[0]?.qual }}<br>
+                CV: &nbsp; <a *ngIf="profile[0].cv_url" href="{{profile[0].cv_url}}" target="_blank"><mat-icon>attach_file</mat-icon></a>
+                <br>
+                Position:<input type="text" [(ngModel)]="position" placeholder="Position" [ngModelOptions]="{standalone: true}"/>
+                <br><button mat-raised-button (click)="storeCandidate()">Save As Candidate</button>
+              </div>
+            </div>
+          </fieldset>
+
+          <div class="table">
+
+            <div *ngIf="dataSource">
+              <mat-form-field class="search-form-field" floatLabel="never" 
+              matTooltipPosition="right" matTooltip="Filter Scanned Candidates">
+                <input matInput (keyup)="applyFilter()" [(ngModel)]="searchKey" placeholder="Search" autocomplete="off"
+                  [ngModelOptions]="{standalone: true}">
+                <button mat-button (click)="onSearchClear()" matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-form-field>
+            </div>
+
+            <div class="mat-elevation-z8">
+              <mat-table [dataSource]="dataSource"
+              matTooltipPosition="above" matTooltip="Sortable Columns" matSort>
+
+                <ng-container matColumnDef="name">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <mat-icon>arrow_drop_down</mat-icon> Name
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="stars">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <mat-icon>arrow_drop_down</mat-icon> Stars
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.stars}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="email">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <mat-icon>arrow_drop_down</mat-icon> Email
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="tag">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <mat-icon>arrow_drop_down</mat-icon> Tagged
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.tag}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="notes">
+                  <mat-header-cell *matHeaderCellDef mat-sort-header>
+                    <mat-icon>arrow_drop_down</mat-icon> Notes
+                  </mat-header-cell>
+                  <mat-cell *matCellDef="let element"> {{element.notes}}</mat-cell>
+                </ng-container>
+
+                <!--    <ng-container matColumnDef="picture">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Picture </mat-header-cell>
+                <mat-cell *matCellDef="let element"> {{element.picture}}</mat-cell>
+              </ng-container>   -->
+
+                <ng-container matColumnDef="Actions">
+                  <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                  <mat-cell *matCellDef="let row; let i = index">
+                    <button mat-icon-button matTooltipPosition="left" matTooltip="Review Candidate" color="primary" (click)="inspect(i)">
+                      <mat-icon>pageview</mat-icon>
+                    </button>
+                    &nbsp;
+                    <button mat-icon-button matTooltipPosition="left" matTooltip="Shortlist Candidate" color="primary" (click)="save(i)">
+                      <mat-icon>save_alt</mat-icon>
+                    </button>
+                    &nbsp;
+                    <button mat-icon-button matTooltipPosition="left" matTooltip="Delete Scanned Candidate" color="primary" (click)="delete(i)">
+                      <mat-icon>delete_outline</mat-icon>
+                    </button>
+                    
+                  </mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+              </mat-table>
+
+              <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" [pageSize]="20" showFirstLastButtons></mat-paginator>
+
+            </div>
+          </div>
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+</mat-dialog-content>

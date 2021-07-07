@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Notify me of events</h2>
+
+<mat-dialog-content>
+  <p>We would like to send you information about events and updates from time to time to let 
+    you know about new events you may be interested in. If you agree your browser will open a dialog 
+    asking you to allow us to permission to message you. If at any time you decide you dont want 
+    messages you can unsubscribe in your update profile page.
+  </p>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <div class="action" (click)="agree()">&nbsp; I agree &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+  </div>
+
+  <div class="action" (click)="decline()">&nbsp; Maby Later &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+  </div>
+  <!--  <button mat-button (click)="decline()">Decline</button>  -->
+  <!--<button mat-raised-button (click)="agree()">Close</button>  -->
+ <!-- <img (click)="agree()" src="../../assets/brand/buttons/yes-btn.png" alt="close dialog" />  -->
+</mat-dialog-actions>

@@ -1,0 +1,29 @@
+
+<div id="app">
+  <div><video #video id="video" width="640" height="480" playsinline="true" autoplay></video></div>
+
+  <div *ngIf="!startcam">
+    <button mat-raised-button color="accent" #showVideo (click)="init($event)">Start Camera</button>
+  </div>
+
+ 
+
+  <div *ngIf="startcam">
+    <div><button mat-raised-button color="accent" id="snap" (click)="capture()">Snap Photo</button></div>
+    <canvas #canvas id="canvas" width="640" height="480"></canvas>
+  
+    Click an image below to save
+    <ul>
+      <li *ngFor="let c of captures; let i = index;">
+        <img src="{{ c }}" height="50" (click)="setSelfie(i)" />
+      </li>
+    </ul>
+  </div>
+
+
+
+
+  <div *ngIf="selfieload">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</div>

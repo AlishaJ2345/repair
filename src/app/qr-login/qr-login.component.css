@@ -1,0 +1,16 @@
+.center-img {
+    width:280px;
+    margin: 0 auto;
+  }
+
+  .mag{
+    height:580px;
+  }
+  .mat-card{
+    width: 260px;
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }

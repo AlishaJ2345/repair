@@ -1,0 +1,116 @@
+.example-small-box, .example-large-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 16px;
+    padding: 16px;
+    border-radius: 8px;
+  }
+  
+  .example-small-box {
+    height: 100px;
+    width: 100px;
+  }
+  
+  .example-large-box {
+    height: 500px;
+    width: 500px;
+  }
+
+  .title {
+    margin-right: auto;
+    font-weight: 400;
+  }
+
+  
+  .content {
+    height: 400px;
+  }
+
+  .login{
+    width: 260px;
+    height: 400px;
+    margin: 0 auto; 
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .lock{
+    width: 140px;
+    margin: 0 auto;
+  }
+
+  mat-card{
+    width:260px;
+    height: auto;
+  }
+
+  .warning{
+    color: red;
+  }
+
+  a {
+    cursor: pointer;
+    color: blue;
+  }
+
+  mat-form-field{
+    width:90%;
+  }
+  .icon{
+    height:20px;
+    width: auto;
+}
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+button{
+  margin-left:10px;
+}
+input{
+  line-height: 22px;
+  width: 90%;
+  background-color: white;
+  border-color: #CCCCCC;
+  border-radius: 5px;
+  font-family: 'core book' !important;
+}
+::placeholder { /* Most modern browsers support this now. */
+  color:    #8EA5AE;
+}
+
+label{
+  color: #F07D00;
+  font-size: 20px;
+  font-family: 'core book' !important;
+  text-align: left!important;
+}
+.alignend{
+  text-align: right;
+  color: #F07D00;
+}
+mat-card-content{
+  color: #F07D00;
+  text-align: left;
+  font-size: 20px;
+}
+.labelchar{
+  font-family: 'core book' !important;
+  color: black;
+}
+.action{
+  max-width: 220px;
+}
+.mat-card-actions{
+  margin-left: 16px;
+}
+.back-light{
+  padding-top: 0px;
+}
+.mat-select{
+  background-color: white;
+}

@@ -1,0 +1,73 @@
+<div class="aligner" *ngIf="state == 'register'">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <form>
+
+      <div class="back-light">
+
+        <div class="labelchar">Select Account Type</div>
+
+        <mat-select [(value)]="selected" required>
+          <mat-option value="user">Student</mat-option>
+          <mat-option value="employer">Employer</mat-option>
+        </mat-select>
+
+        <div *ngIf="selected != 'employer'">
+            <div class="labelchar">Student ID</div>
+            <input type="text" placeholder="Student ID" [(ngModel)]="student_id" name="student_id" required>
+        </div>
+
+        <div class="labelchar">User Name</div>
+        <input type="text" placeholder="User Name" [(ngModel)]="name" name="name" required>
+
+        <div class="labelchar">Email</div>
+        <input type="text" placeholder="Email" [(ngModel)]="email" name="email" required>
+
+        <div class="labelchar">Password</div>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+
+        <div class="labelchar">Password Again</div>
+        <input type="password" (keyup)="checkRegPassMatch()" placeholder="Password Again" [(ngModel)]="repassword" name="repassword"
+          required>
+
+        <div *ngIf="isPwaReady">
+          <div *ngIf="pwa.promptEvent">
+            <div class="labelchar">Add app to home screen</div>
+            <button mat-raised-button (click)="addApp($event)">Add app</button>
+            <br>
+          </div>
+
+          <div *ngIf="isPushSub">
+            <div class="labelchar">Notify Events and Updates</div>
+            <mat-slide-toggle class="example-margin" (change)="radioChange($event)" [(ngModel)]="selectNotify"
+              [ngModelOptions]="{standalone: true}">
+              Allow</mat-slide-toggle>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div *ngIf="noMatch">
+        <span class="warning">Passwords do not match</span>
+      </div>
+
+      <div *ngIf="registeraction">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <mat-card-actions>
+
+        <div class="action" (click)="register()">&nbsp; Register &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+        <!--    <div class="action" (click)="state = 'login'">&nbsp; Cancel &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>   -->
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

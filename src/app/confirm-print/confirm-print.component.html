@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>{{ this.data.eventName }}</h2>
+
+<mat-dialog-content>
+  Welcome,<br>
+  A Name Label will be at<br>
+  Printer Station: {{ this.data.stationNum }}<br>
+  <br>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+<!--  <div class="action" (click)="decline()">&nbsp; no &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+  </div>  -->
+  <div class="action" (click)="agree()">&nbsp; OK &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+  </div>
+<!--  <div class="action" (click)="account()">&nbsp; Create Account &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+  </div> -->
+
+  <!--  <img (click)="decline()" src="../../assets/brand/buttons/decline-btn.png" alt="close dialog" />
+  <img (click)="agree()" src="../../assets/brand/buttons/accept-btn.png" alt="close dialog" /> -->
+  <!--  <button mat-button (click)="decline()">No</button>
+  <button mat-raised-button (click)="agree()">Yes</button>   -->
+</mat-dialog-actions>

@@ -1,0 +1,15 @@
+
+<div [class.aligner]="isAligned">
+    <mat-toolbar class="header-wrapper-sm" [style.width.%]="100" (window:resize)="onResize($event)"
+        [style.height.px]="bannerHeight" [class.nopadding]="removePadding">
+        <a routerLink="/home"><img src="{{ logo }}" /></a>
+        <span class="example-fill-remaining-space"></span>
+        <app-menu [ngClass]="{'moveleft':adjust}"></app-menu>
+    </mat-toolbar>
+</div>
+<!--
+<div>
+    <div class="aligner">
+        <mat-toolbar class="fdc" [style.width.%]="percentWidth"></mat-toolbar>
+    </div>
+</div>  -->

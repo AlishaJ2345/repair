@@ -1,0 +1,27 @@
+
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+
+  .header{
+
+    height: 0;
+    padding: 0; /* remove any pre-existing padding, just in case */
+    padding-bottom: 60%; /* for a 4:3 aspect ratio */
+    background-color: white;
+    background-image: url("../../assets/brand/headers/mobile_header_sm1.png");
+    background-position: center center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .sizer{
+    width: 100%;
+    height: auto;
+  }

@@ -1,0 +1,137 @@
+
+<div class="right-div">
+  <div class="center-img">
+    <mat-card>
+      <mat-card-header>
+        <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{ qricon }}" alt="pic">
+        <mat-card-title>Scan QRCode to enter</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="!capture; else captured">
+          <div *ngIf="!show">
+            <h3>Share Details</h3>
+          </div>
+          <div class="right-div">
+            <div class="center-img" *ngIf="show">
+              <div *ngIf="typeOfScan == 'event'">
+                <h3>Sign In Successful!</h3>
+                <img src="../../assets/pics/City-campus-map.PNG">
+              </div>
+              <div *ngIf="typeOfScan == 'user'">
+                
+                  <h3>Friend Added</h3>
+                  <img src="../../assets/pics/profile.jpg" style="height:100px;width:100px;"><br>
+                  You have added,<br>
+                  {{ friend_name }}<br>
+                  {{ friend_email }}<br>
+                  as a friend.
+               
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-template #captured>
+
+          <!--    <div class="right-div">  -->
+          <div class="center-img">
+
+        <!--    <mat-select color="accent" (change)="onChange($event.target.value)" placeholder="SwapCameras">
+              <mat-option *ngFor="let device of devices" value="{{device.deviceId}}">{{device.label}}</mat-option>
+            </mat-select>    -->
+
+            <div class="left-div">
+              <div class="outer-container">
+                <div class="inner-container">
+
+                  <!--     <div class="video-overlay" *ngIf="found">    
+                    <img class="over" src="../../assets/images/Reticle.png">
+                  </div>    -->
+
+                  <div class="video-overlay-tl" *ngIf="found && hasPermission && camStarted">
+                    <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tl.png">
+                  </div>
+
+                  <div class="video-overlay-tr" *ngIf="found && hasPermission && camStarted">
+                    <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tr.png">
+                  </div>
+
+                  <div class="video-overlay-bl" *ngIf="found && hasPermission && camStarted">
+                    <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_bl.png">
+                  </div>
+
+                  <div class="video-overlay-br" *ngIf="found && hasPermission && camStarted">
+                    <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_br.png">
+                  </div>
+
+              <!--    <zxing-scanner #scanner [scannerEnabled]="camStarted" [autofocusEnabled]="true" [device]="selectedDevice"
+                    (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>   -->
+                    <div [hidden]="!hasCameras">
+                      <zxing-scanner #scanner  [autofocusEnabled]="true" [device]="selectedDevice"
+                      (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+                    </div>
+                    <div *ngIf="hasPermission === false">
+                      <h3>You Denied the camera permissions</h3>
+                    </div>
+                    <div *ngIf="!hasCameras && hasPermission === true">
+                      <h3>No camera detected</h3>
+                    </div>
+                    <div *ngIf="hasPermission === undefined">
+                      <h3>Waiting for permissions</h3>
+                    </div>
+                  </div>
+              </div>
+              <br>
+              <div *ngIf="scanprogress && camStarted">
+                <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+              </div>
+              <br>
+            </div>
+          </div>
+          <!--    </div> -->
+
+        </ng-template>
+      </mat-card-content>
+      <mat-card-content>
+          <div *ngIf="typeOfScan == 'event'">
+              <div class="eventDetails">
+                  Title: {{ title }}<br>
+                  Date: {{ date | date:'fullDate'}}<br>
+                  Location: {{ location }}<br>
+                  Speakers: {{ speakers }}
+                </div>
+          </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>
+
+
+
+
+
+<!--<div class="hostDetails">
+  <h3>Speaker Details</h3>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>Name</th>
+        <th>Company</th>
+        <th>Job Title</th>
+        <th>Profile</th>
+        <th>Link</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let speaker of speakerList; let i = index;">
+      <tr>
+        <th scope="row">{{i+1}}</th>
+        <td>{{speaker.name}}</td>
+        <td>{{speaker.company}}</td>
+        <td>{{speaker.job_title}}</td>
+        <td>{{speaker.profile}}</td>
+        <td>{{speaker.link}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div> -->

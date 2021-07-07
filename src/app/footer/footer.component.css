@@ -1,0 +1,21 @@
+.page-footer{
+    color: white;
+    font-family: 'core book'  !important; 
+    background-color: black !important;
+}
+.anchortag{
+    color: blue !important;
+    cursor: pointer;
+}
+.plat{
+    color:#5f727a;
+    font-family: 'core medium'  !important;
+}
+.underline { 
+    text-decoration: underline;
+    color: white;
+    font-family: 'core book'  !important; 
+}
+img{
+    margin-bottom: 16px;
+}

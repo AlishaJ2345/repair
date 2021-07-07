@@ -1,0 +1,653 @@
+.msg{
+  width:100%;
+  min-height:40px;
+  background: #24ce15;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  margin-bottom: 3px;
+  background-image: url('../../../assets/images/phonefree.png');
+  background-size: 40px 40px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px; /* Adjust according to image size to push text across. */
+}
+.video {
+  /*scroll-snap-type: y mandatory;*/
+  /*overflow-y: scroll;*/
+  width: 100%;
+  height:auto;
+}
+
+.data{
+  border: 1px solid black;
+}
+.inline-div{
+  display:inline-block;
+}
+.txtdata{
+  min-width:100%;
+  min-height:100%;
+  display: inline-block;
+}
+.butt{
+  border: 1px solid black;
+  cursor: pointer;
+}
+.sidebyside{
+  border: 1px solid black;
+  padding: 20px;
+  margin:10px;
+}
+.call{
+  background: #FF6600;
+  min-height:40px;
+  color: white;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.recording{
+  background-image: url('../../../assets/images/cam.jpg');
+  background-size: 40px 40px;
+  background-position: left center;
+  background-repeat: no-repeat;
+  padding-left: 20px; /* Adjust according to image size to push text across. */
+}
+.btn{
+  width:auto;
+  min-width:100px;
+  height:30px;
+  background-color: #0073AA;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #0073AA;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.drawbutton{
+  min-width:80px;
+  height:20px;
+  background-color: #0073AA;
+  color: white;
+  cursor: pointer;
+  border: 1px solid #0073AA;
+  border-radius: 10px;
+  margin-right: 5px;
+}
+.drawbutton.on{
+  max-width: 60px;
+}
+.btn-l{
+  float:left;
+}
+.btn-c{
+  float:center;
+}
+.btn-r{
+  float:right;
+}
+
+#statusStream{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+#statusData{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+#statusP2P{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+#status{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+#statusICE{
+  width: 20px;
+  height: 20px;
+  background-color: red;
+}
+.moniter{
+  display: inline-block;
+  width:80%;
+  margin-bottom: 10px;
+  height:20px;
+}
+button{
+  background: #0073AA;
+  width:200px;
+  max-height: 100px;
+  color: white;
+  border-radius: 8px;
+}
+textarea{
+  width:100%;
+  height:90%;
+}
+#content {
+  width: 100%;
+  height:80%;
+}
+/*
+#content {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(7, minmax(10px, auto));
+  max-width: 100%;
+  margin: 0 auto;
+  grid-column-gap: 10px;
+  grid-row-gap: 10px;
+}
+.video {
+  grid-column: 1/3;
+  grid-row: 1/3;
+  background-color: #474747;
+  border-radius: 5px;
+}
+.video-large{
+  grid-column: 1/6;
+  grid-row: 1/3;
+  background-color: whitesmoke;
+  border-radius: 5px;
+}
+.canv{
+  grid-column: 4/5;
+  grid-row: 1/4;
+  background-color: whitesmoke;
+}
+.callbuttons{
+  display: inline-flex;
+  grid-column: 1/3;
+  grid-row: 3/4;
+  background-color: #474747;
+  max-height: 50px;
+}
+.peername{
+  border: black solid 1px;
+  min-width: 80px;
+  background-color: white;
+}
+/* show change of color when on call */
+.busyOnCall{
+  background-color: red;
+  color: white;
+  background-image: url('../../../assets/images/phonebusy.png');
+}
+.offers{
+  width: 100px;
+  height:100px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+
+}
+.pendingFiles{
+  width: 100px;
+  height:100px;
+  background-color: #474747;
+  border-radius: 5px;
+}
+.DandD{
+  width:200px;
+  height:100px;
+  background-color: #474747;
+}
+.drag{
+  background-color: whitesmoke;
+  height: 100px;
+  width: 100px;
+  border: 1px solid black;
+}
+.deviceSelector{
+  width: 100px;
+  height:100px;
+  display: -webkit-inline-flex;
+  background-color: whitesmoke;
+  border: 1px solid black;
+}
+
+
+.users{
+  width: 100px;
+  height:100px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.DandDMobile{
+  display: none;
+}
+
+.dropzone {
+  min-height: 100px;
+  min-width: 100px;
+  display: table;
+  width: 100px;
+  background-color: #eee;
+  border: dotted 1px #0073AA;
+  border-radius: 10px;
+}
+.text-wrapper {
+  display: table-cell;
+  vertical-align: middle;
+  /*max-width:100px;*/
+}
+.centered {
+  font-family: sans-serif;
+  font-size: 1.3em;
+  font-weight: bold;
+  text-align:center;
+}
+.progess-box{
+  border: 1px solid black;
+  text-align:left;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-bottom: 8px;
+}
+canvas {
+  cursor: crosshair;
+  border: 1px solid #000;
+}
+.smCanv{
+  width: 100%;
+  height: 100%;
+}
+.drawpad{
+  width:300px;
+  height:300px;
+
+}
+
+.filesbutton{
+  width:40px;
+}
+
+.filesbuttons{
+  width:40px;
+  background-color: lightslategray;
+}
+
+#flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: auto;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+#flex{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.container{
+  width: 160px;
+  height: 40px;
+  margin: auto;
+}
+.one {
+  width: 40px;
+  height: 40px;
+  float: left;
+}
+.one.on{
+  background-image:url('../../../assets/images/coolCam.png');
+}
+.two {
+  height: 40px;
+  width:40px;
+  float: right;
+}
+.two.on{
+  background-image:url('../../../assets/images/mic.png');
+}
+.flex-item {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+.flex-i {
+  border-radius: 5px;
+  margin-bottom: 5px;
+  width:auto;
+}
+.file-offer{
+  margin-top: 20px;
+  height:auto;
+  padding-bottom: 3px;
+  background-color: #F07D00;
+  border: teal solid 2px;
+  border-radius: 5px;
+  text-align: center;
+  overflow-wrap: break-word;
+  cursor: pointer;
+}
+#black{
+  background-color: #000;
+  cursor: pointer;
+}
+#green{
+  background-color: green;
+  cursor: pointer;
+}
+#red{
+  background-color: red;
+  cursor: pointer;
+}
+#blue{
+  background-color: blue;
+  cursor: pointer;
+}
+#grey{
+  background-color: grey;
+  cursor: pointer;
+}
+#clear{
+  font-size: 12px;
+  cursor: pointer;
+  background-color: white;
+  border: #000 solid 1px;
+}
+#close{
+  font-size: 12px;
+  cursor: pointer;
+  background-color: white;
+  border: #000 solid 1px;
+}
+
+/* video canvas overlay  */
+.draw{
+  position:absolute;  
+  z-index:auto; 
+  top:2px;
+  left:10px;
+  min-width: 260px;
+  min-height: 440px;
+}
+.files{
+  position:absolute;  
+  z-index:-1;  
+  top:2px; 
+  left:10px;
+  min-width: 280px;
+  min-height: 440px;
+  background-color: white;
+  border: #FF6600 solid 1px;
+}
+.call-page {
+  position:absolute;  
+  z-index:1;  
+  left:0px;  
+  top:0px; 
+  width: 280px;
+  height: auto;
+}
+.locator{
+  position: absolute;
+  z-index:5;  
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto; 
+  bottom:200px; 
+  max-height: 35px;
+  height:0px;
+}
+.micvol{
+  position:absolute;  
+  z-index:5;  
+  left:40%;
+  right:40%;
+  margin-left: auto;
+  margin-right: auto; 
+  bottom:20px; 
+  background-color: white;
+  width:150px;
+  height:60px;
+}
+.slider{
+  z-index:5;
+  min-height: 10px;
+  background-color: white;
+  background: white;
+  border: blue solid 2px;
+}
+.diagnostic{
+  position:absolute;
+  z-index:5;
+  top:0;
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+}
+.cameraSelector{
+  position:absolute;
+  top:200px;
+  z-index: 20;
+  left:0;
+  right:0;
+  margin-left: auto;
+  margin-right: auto;
+  width:280px;
+  background-color: white;
+}
+.hide{
+  z-index: -3;
+}
+.buttotop{
+  position:fixed;
+  top:60px;
+  z-index: 10;
+}
+.buttobot{
+  position:fixed;
+  bottom:100px;
+}
+
+#localVideo {
+  border: double 1px #474747;
+  width:50px;
+  height:auto;
+  max-height: 50px;
+}
+#self {
+  position:absolute;
+  top:2px;
+  z-index: 3;
+  left:14;
+  border: #FF6600 solid 1px;
+  width: 60px;
+  height: auto;
+}
+
+.marginbottom{
+  margin-bottom: 40px;
+}
+
+#flex-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.flex-item {
+  width: 80px;
+  height: 30px;
+}
+
+.flex-item2 {
+  width: 100px;
+  height: auto;
+}
+
+#remoteVideo {
+  position: relative;
+  top:64px;
+  left:0px;
+  width: 90px;
+  height: auto;
+  background-color: black;
+  border: 4px solid gray;
+}
+#remoteVideo.full {
+  position: fixed; 
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 90%;
+  width: auto;
+  height: auto;
+  background-size: cover;
+}
+
+.filler {
+  flex-grow: 1;
+  background: lightgreen;
+}
+
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mat-card{
+  min-height:400px;
+  min-width: 280px;
+  height: 100vh;
+}
+.example-card{
+  height: 100vh;
+}
+.ilb{
+  display: inline-block;
+}
+.closeDnd{
+  position: relative;
+  bottom: 0;
+}
+
+/*  mobile layout   */
+
+#content {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 85vw;
+  height: 90vh;
+  margin: 0 auto;
+  grid-column-gap: 1px;
+  grid-row-gap: 1px;
+}
+
+#background{
+  grid-column: 1/9;
+  grid-row: 1/8;
+  width: 85vw;
+  height: 90vh;
+}
+video#background{
+  border: solid gray 2px;
+  background-color: #000;
+  width:100%;
+  height:100%;
+}
+#controls{
+  grid-column: 4/6;
+  grid-row: 7;
+  z-index: 5;
+}
+#cameraSelector{
+  grid-column: 4/6;
+  grid-row: 5;
+  z-index: 100;
+}
+
+.draw{
+  grid-column: 4/6;
+  grid-row: 1/7;
+  z-index: 5;
+  background-color: white;
+  transition: 1s;
+  z-index: 5;
+}
+.draw.off{
+  z-index: -5;
+}
+.files{
+  grid-column: 4/6;
+  grid-row: 1/7;
+  z-index: 5;
+  background-color: white;
+  transition: 1s;
+  z-index: 5;
+}
+.files.off{
+  z-index: -5;
+}
+
+@media only screen and (max-width:480px){
+  #controls{
+    grid-column: 1/7;
+    grid-row: 7;
+    z-index: 5;
+  }
+  #draw{
+    grid-column: 1/8;
+    grid-row: 1/7;
+    z-index: 5;
+    background-color: white;
+    transition: 1s;
+  }
+  #files{
+    grid-column: 1/8;
+    grid-row: 1/7;
+    z-index: 5;
+    background-color: white;
+    transition: 1s;
+  }
+}
+@media only screen and (max-width:600px){
+  #controls{
+    grid-column: 1/6;
+    grid-row: 7;
+    z-index: 5;
+  }
+  #draw{
+    grid-column: 2/8;
+    grid-row: 1/7;
+    z-index: 5;
+    background-color: white;
+    transition: 1s;
+  }
+  #files{
+    grid-column: 2/8;
+    grid-row: 1/7;
+    z-index: 5;
+    background-color: white;
+    transition: 1s;
+  }
+}
+
+/*@media (min-width:320px)  { */
+  /* smartphones, portrait iPhone, portrait 480x320 phones (Android)  
+
+}
+@media (min-width:480px)  { /* smartphones, Android phones, landscape iPhone  }*/
+@media (min-width:600px)  { /* portrait tablets, portrait iPad, e-readers (Nook/Kindle), landscape 800x480 phones (Android) */ }
+@media (min-width:801px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }

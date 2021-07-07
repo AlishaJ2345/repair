@@ -1,0 +1,66 @@
+<h3 matTooltip="Details of Selected Student">Inspect Student</h3>
+<div id="content">
+
+    <div class="image">
+        <img src="{{candidateDetail?.pic_url}}" style="width:150px;height:auto;">
+    </div>
+    <div class="person">
+        {{candidateDetail?.name}}
+    </div>
+    <div class="contact">
+        {{candidateDetail?.email}}
+    </div>
+    <div class="navagation">
+        navup &nbsp; navdown
+        <br>
+        <button (click)="gobackButton()">Back</button>
+    </div>
+    <div class="header">
+        details
+    </div>
+    <div class="skills">
+        skills
+        <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="name">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                <mat-cell *matCellDef="let Skill"> {{Skill.name}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="details">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Details </mat-header-cell>
+                <mat-cell *matCellDef="let Skill"> {{Skill.details}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="experience">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Experience </mat-header-cell>
+                <mat-cell *matCellDef="let Skill"> {{Skill.experience}}</mat-cell>
+            </ng-container>
+
+            <ng-container matColumnDef="stars">
+                <mat-header-cell *matHeaderCellDef mat-sort-header> Stars </mat-header-cell>
+                <mat-cell *matCellDef="let Skill"> {{Skill.stars}}</mat-cell>
+            </ng-container>
+
+            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+            <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+        </mat-table>
+        <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+    </div>
+    <div class="cv">
+        CV
+    </div>
+    <div class="buttonBar">
+        Buttons
+    </div>
+</div>
+uid:number,
+name:string,
+email:string,
+uni:string,
+qual:string,
+major:string,
+location:string,
+pic_url:string,
+cv_url:string

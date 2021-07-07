@@ -1,0 +1,54 @@
+.form-container{
+  width:280px;
+  margin: 0 auto;
+  padding: 5px;
+  background: white;
+}
+.warning {
+  color: red;
+}
+mat-form-field{
+  width:100%;
+}
+.photo{
+  border: 1px solid black;
+}
+.center-img {
+  width:280px;
+  margin: 0 auto;
+}
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+input{
+  line-height: 22px;
+  width: 90%;
+  background-color: white;
+  border-color: #CCCCCC;
+  border-radius: 5px;
+  font-family: 'core book' !important;
+}
+::placeholder { /* Most modern browsers support this now. */
+  color:    #8EA5AE;
+}
+.action{
+  max-width: 120px;
+}
+.icon{
+  height:20px;
+  width: auto;
+}
+
+.labelchar{
+  font-family: 'core book' !important;
+  color: black;
+}
+.likeInput{
+  border: black solid 1px;
+  border-radius: 3px;
+  padding: 2px;
+  background: white;
+  width:90%;
+}

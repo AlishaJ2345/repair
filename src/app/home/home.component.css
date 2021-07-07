@@ -1,0 +1,117 @@
+.right-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width:300px;
+    text-align: left;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin: 5px;
+    border: 1px solid black;
+    margin: 0 auto;
+  }
+  .center-img {
+    width: 300px;
+    margin: 0 auto;
+  }
+
+
+  .parent{
+    width:300px;
+
+  }
+  .profilePic {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .friend{
+      border: 1px black solid;
+      border-radius: 5px;
+      padding: 5px;
+      width:auto;
+      cursor: pointer;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+  
+  .row {
+    display: flex;
+  }
+  
+  /* Create three equal columns that sits next to each other */
+  .column {
+    flex: 30%;
+    padding: 5px;
+  }
+.print{
+    width:85%;
+    height:80px;
+    background-color: #d3e2f0;
+}
+a.disabled {
+  pointer-events: none;
+  cursor: default;
+}
+
+.butt2{
+  width: 100%;
+  height: auto;
+}
+
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+mat-grid-tile {
+  background: #d3e2f0;
+  border-radius: 8px;
+}
+
+.info{
+  height:100%;
+  width: 100%;
+}
+
+/*mat-grid-tile-footer{
+  max-height: 10%;
+}*/
+mat-grid-list{
+  width: 100%;
+}
+.mat-grid-tile-footer{
+  align-content: center;
+  font-family: 'core book' !important;
+}
+span{
+  color:#536972;
+  font-family: 'core medium' !important;
+  font-size: 18px;
+  text-align: center;
+}
+.flex-container{
+  display: flex; 
+  align-items: center;
+  flex-direction: column;
+  justify-content: stretch;
+}
+
+span.flex-item{
+  display: flex;
+  width: auto;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 5px;
+}
+.mat-card{
+  width: 100%;
+}
+.sizer{
+  width: 100%;
+  height: auto;
+}

@@ -1,0 +1,200 @@
+<div class="form">
+
+  <div>
+    <div class="aligner">
+      <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+        <mat-card-header>
+          <!--  <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{user.pic_url}}" alt="pic">  -->
+          <mat-card-title>Enter Your Details</mat-card-title>
+          <!--    <button mat-raised-button color="primary" (click)="nextLabel()">Change Label</button> -->
+
+        </mat-card-header>
+
+        <mat-card-content>
+          <div class="back-light">
+            <h3>{{ event_name }}</h3>
+            <h4>Print A 4 Name Label</h4>
+            <br>
+            <mat-radio-group class="aligner" layout="row" (change)="radioChange($event)">
+              <mat-radio-button color="primary" [checked]="true" value="1">Student &nbsp; </mat-radio-button>
+              <mat-radio-button color="primary" value="2">Employer &nbsp; </mat-radio-button>
+              <mat-radio-button color="primary" value="3">Guest &nbsp; </mat-radio-button>
+            </mat-radio-group>
+            <br>
+
+            <div *ngIf="labelType == 'studentLabel'">
+              <form [formGroup]="StudentLabel" class="form-full-width">
+                <fieldset>
+                  <!--       <legend>Enter Student Detailsl</legend>  -->
+
+                  <div class="aligner">
+                    <div class="label-student">
+
+                      <!--  <img src="../../assets/brand/logos/AUT_Logo-mobile_sm1.png" class="logo" />  -->
+
+                      <div [hidden]="!isInputShown" class="labelchar">Print Station Number</div>
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <input [hidden]="!isInputShown" type="number" formControlName="station" name="station" placeholder="0"><br>
+
+
+                      <div class="labelchar">Student ID Number</div>
+                      <!--   <mat-form-field class="s-id">   -->
+                      <input type="text" formControlName="id" name="id" placeholder="Student ID Number"><br>
+                      <div class="alignend">{{ getStudentIDChars() }}</div>
+                      <!--      <mat-hint align="end">NOT PRINTED ON LABEL!</mat-hint>
+                      </mat-form-field>   -->
+
+                      <div class="labelchar">Full Name</div>
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <input type="text" formControlName="name" name="name" placeholder="Name"><br>
+                      <div class="alignend">{{ getStudentNameChars() }}</div>
+                      <!--      <mat-hint align="end">Enter Name</mat-hint>
+                      </mat-form-field>  -->
+
+                      <div class="labelchar">Programme</div>
+                      <!--    <mat-form-field class="input-full-detail">  -->
+                      <input type="text" formControlName="programme" name="programme" placeholder="Qualification"><br>
+                      <div class="alignend">{{ getProgrammeChars() }}</div>
+                      <!--      <mat-hint align="end">Enter Qualification</mat-hint>
+                      </mat-form-field>  -->
+
+                      <div class="labelchar">Major</div>
+                      <!--    <mat-form-field class="input-full-major">   -->
+                      <input type="text" formControlName="major" name="major" placeholder="Major or Subject"><br>
+                      <div class="alignend">{{ getMajorChars() }}</div>
+                      <!--      <mat-hint align="end">Enter Major/Subject</mat-hint>
+                      </mat-form-field>   -->
+
+                    </div>
+                  </div>
+
+                  <div *ngIf="printPrgress">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                  </div>
+                  <br>
+
+                </fieldset>
+
+              </form>
+            </div>
+
+            <div *ngIf="labelType == 'employerLabel'">
+              <form [formGroup]="EmployerLabel" class="form-full-width">
+                <fieldset>
+                  <!--      <legend>Enter Employer Details</legend>  -->
+
+                  <div class="aligner">
+                    <div class="label-student">
+
+                      <!--    <img src="../../assets/brand/logos/AUT_Logo-mobile_sm1.png" class="logo" />   -->
+                      <div [hidden]="!isInputShown" class="labelchar">Print Station Number</div>
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <input [hidden]="!isInputShown" type="number" formControlName="station" name="station" placeholder="0"><br>
+
+
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <div class="labelchar">Name</div>
+                      <input type="text" formControlName="name" name="name" placeholder="Name"><br>
+                      <div class="alignend">{{ getEmployerNameChars() }}</div>
+                      <!--      <mat-hint align="end">Enter your Name.</mat-hint>
+                      </mat-form-field>   -->
+
+                      <div class="labelchar">Company</div>
+                      <!--    <mat-form-field class="input-full-detail">  -->
+                      <input type="text" formControlName="company" name="company" placeholder="Company"><br>
+                      <div class="alignend">{{ getEmployerCompanyChars() }}</div>
+
+                      <!--      <mat-hint align="end">Enter Company Name</mat-hint>
+                      </mat-form-field>  -->
+                      <div class="labelchar">Position</div>
+                      <!--  <mat-form-field class="input-full-major">  -->
+                      <input type="text" formControlName="position" name="position" placeholder="Position"><br>
+                      <div class="alignend">{{ getEmployerPositionChars() }}</div>
+                      <!--    <mat-hint align="end">Enter your Role</mat-hint>
+                      </mat-form-field>  -->
+                    </div>
+                  </div>
+
+                  <div *ngIf="printPrgress">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                  </div>
+                  <br>
+
+                </fieldset>
+              </form>
+              <!--    {{findInvalidControls()}}  -->
+            </div>
+
+            <div *ngIf="labelType == 'guestLabel'">
+
+              <form [formGroup]="GuestLabel" class="form-full-width">
+                <fieldset>
+                  <!--      <legend>Enter Guest Details</legend>   -->
+
+                  <div class="aligner">
+                    <div class="label-guest">
+
+                      <div [hidden]="!isInputShown" class="labelchar">Print Station Number</div>
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <input [hidden]="!isInputShown" type="number" formControlName="station" name="station" placeholder="0"><br>
+
+                      <!--      <img src="../../assets/brand/logos/AUT_Logo-mobile_sm1.png" class="logo" />   -->
+                      <div class="labelchar">Name</div>
+                      <!--    <mat-form-field class="input-full-name">  -->
+                      <input type="text" formControlName="name" name="name" placeholder="Name"><br>
+                      <div class="alignend">{{ getGuestNameChars() }}</div>
+                      <!--      <mat-hint align="end">Enter your Name</mat-hint>
+                      </mat-form-field>   -->
+
+                      <div class="labelchar">Details</div>
+                      <!--    <mat-form-field class="input-full-detail">   -->
+                      <input type="text" formControlName="detail" name="company" placeholder="Details"><br>
+                      <div class="alignend">{{ getDetailChars() }}</div>
+                      <!--      <mat-hint align="end">Enter Details</mat-hint>
+                      </mat-form-field>  -->
+                    </div>
+                  </div>
+
+                  <div *ngIf="printPrgress">
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                  </div>
+                  <br>
+
+                </fieldset>
+              </form>
+            </div>
+
+          </div>
+        </mat-card-content>
+        <div class="btn-group aligner" role="group">
+
+          <div *ngIf="labelType == 'studentLabel'">
+            <div [hidden]="StudentLabel.invalid">
+              <div class="action" (click)="printLabel(true)">&nbsp; submit &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="labelType == 'guestLabel'">
+            <div [hidden]="GuestLabel.invalid">
+              <div class="action" (click)="printLabel(true)">&nbsp; submit &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="labelType == 'employerLabel'">
+            <div [hidden]="EmployerLabel.invalid">
+              <div class="action" (click)="printLabel(true)">&nbsp; submit &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

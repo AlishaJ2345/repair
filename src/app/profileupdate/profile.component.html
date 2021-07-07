@@ -1,0 +1,173 @@
+<div *ngIf="isStudent" class="aligner">
+  <div>
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+      <mat-card-header>
+        <mat-card-title>Update Profile</mat-card-title>
+      </mat-card-header>
+      <div class="back-light">
+        <form [formGroup]="Sprofileform">
+
+          <div class="labelchar">University</div>
+          <input placeholder="University" name="uni" formControlName="uni" required>
+
+          <div *ngIf="s.uni.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Qualification</div>
+          <input placeholder="Qualification" name="qual" formControlName="qual" required>
+
+          <div *ngIf="s.qual.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Qualification</div>
+          <input placeholder="Major" name="major" formControlName="major" required>
+
+          <div *ngIf="s.major.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Year of study</div>
+          <input placeholder="Year of study" name="year" formControlName="year" required>
+
+          <div *ngIf="s.year.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Location</div>
+          <input placeholder="Year of study" name="location" formControlName="location" required>
+
+          <div *ngIf="s.location.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+
+          <div *ngIf="cv_url != ''">
+            <div class="labelchar">Existing CV</div>
+            <div class="likeInput">
+              <a href="{{cv_url}}" target="_blank">Open Existing CV</a>
+            </div>
+          </div>
+
+          <div class="labelchar">Upload new CV</div>
+          <input type="file" id="cv" name="cv" (change)="handleCVInput($event.target.files)">
+
+          <div *ngIf="isPwaReady">
+            <div *ngIf="pwa.promptEvent">
+              <div class="labelchar">Add app to home screen</div>
+              <button mat-raised-button (click)="addApp($event)">Add app</button>
+              <br>
+            </div>
+
+            <!--    <div *ngIf="isPushSub">   -->
+            <div *ngIf="true">
+              <div class="labelchar">Notify Events and Updates</div>
+              <mat-slide-toggle class="example-margin" (change)="radioChange($event)" [(ngModel)]="selectNotify" [checked] = "selectNotify"
+                [ngModelOptions]="{standalone: true}">
+                Allow</mat-slide-toggle>
+            </div>
+
+            <div class="labelchar">Promote Profile to Employers</div>
+            <mat-slide-toggle class="example-margin" (change)="promoteChange($event)" [(ngModel)]="selectPromote" [checked] = "selectPromote"
+              [ngModelOptions]="{standalone: true}">
+              Allow</mat-slide-toggle>
+
+          </div>
+
+          <mat-card-actions>
+
+            <div class="action" (click)="submitStudentProfile()">&nbsp; Save &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+            </div>
+
+            <div class="action" (click)="addSkills()">&nbsp; Add Skill &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+
+            <div class="action" (click)="navToProfile()">&nbsp; Cancel &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+            </div>
+          </mat-card-actions>
+
+        </form>
+      </div>
+
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="!isStudent" class="aligner">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>Update Profile</mat-card-title>
+    </mat-card-header>
+    <div class="back-light">
+      <div class="photo">
+        <div *ngIf="profile.logo_url !== undefined && profile.logo_url !== null; else curr">
+          <img src="{{ profile.logo_url }}" style="height:auto;width:180px;" id="eventpic" alt="Upload your profile pic">
+        </div>
+        <ng-template #curr>
+          <img src="../../assets/pics/straplinemobile.png" style="height:auto;width:180px;" alt="Upload your profilet pic">
+        </ng-template>
+      </div>
+
+
+      <button mat-raised-button (click)="showupload = !showupload">Update Logo</button>
+
+      <div *ngIf="showupload">
+        Select Company Logo
+        <div class="form-group">
+          <input type="file" id="photo" name="profilepic" (change)="handleFileInput($event.target.files)">
+        </div>
+      </div>
+
+      <div *ngIf="logoload">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <br>
+      <!--      end set logo picture                    -->
+      <form [formGroup]="Eprofileform">
+
+        <div class="labelchar">Company Name</div>
+        <input placeholder="Company Name" name="company" formControlName="company" required>
+
+        <div *ngIf="e.company.errors?.maxlength">
+          Too Many Charactors in field!
+        </div>
+
+        <div class="labelchar">Position"</div>
+        <input placeholder="Company Name" name="position" formControlName="position" required>
+
+        <div *ngIf="e.position.errors?.maxlength">
+          Too Many Charactors in field!
+        </div>
+
+        <div class="labelchar">Address"</div>
+        <input placeholder="Company Name" name="address" formControlName="address" required>
+
+        <div *ngIf="e.address.errors?.maxlength">
+          Too Many Charactors in field!
+        </div>
+
+        <div class="labelchar">Location"</div>
+        <input placeholder="Company Name" name="location" formControlName="location" required>
+
+        <div *ngIf="e.location.errors?.maxlength">
+          Too Many Charactors in field!
+        </div>
+
+        <mat-card-actions>
+
+          <div class="action" (click)="submitEmployerProfile()">&nbsp; Save &nbsp;
+            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+          </div>
+          <div class="action" (click)="navToProfile()">&nbsp; Cancel &nbsp;
+            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+          </div>
+        </mat-card-actions>
+
+      </form>
+    </div>
+  </mat-card>
+</div>

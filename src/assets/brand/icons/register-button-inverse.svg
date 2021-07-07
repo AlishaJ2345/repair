@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="203" height="96" viewBox="0 0 203 96">
+  <g id="Group_2416" data-name="Group 2416" transform="translate(-31 -218)">
+    <rect id="Rectangle_1383" data-name="Rectangle 1383" width="203" height="96" rx="7" transform="translate(31 218)" fill="#536972"/>
+    <g id="Group_2413" data-name="Group 2413" transform="translate(24.667 9)">
+      <g id="Group_2401" data-name="Group 2401" transform="translate(-156 -255)">
+        <text id="REGISTER" transform="translate(270 515)" fill="#d4e5ef" font-size="12" font-family="HeliaCore-Medium, Helia Core" font-weight="500"><tspan x="0" y="0">REGISTER</tspan></text>
+      </g>
+      <path id="Path_70601" data-name="Path 70601" d="M29.94,44.645H42.41v3.9a2.328,2.328,0,0,1-2.338,2.338H7.338A2.328,2.328,0,0,1,5,48.542V3.338a2.255,2.255,0,0,1,.682-1.656A2.255,2.255,0,0,1,7.338,1H26.823V14.25a2.328,2.328,0,0,0,2.338,2.338H42.41v4.579L29.94,33.539Zm12.47-31.76v.585H29.94V1h.585a2.255,2.255,0,0,1,1.656.682l9.547,9.547A2.255,2.255,0,0,1,42.41,12.886Zm-9.353,21.92,15.88-15.783,6.625,6.625L39.78,41.528H33.058ZM60.434,17.27a2.655,2.655,0,0,1,.682,1.8,2.313,2.313,0,0,1-.682,1.7L57.706,23.5,51.081,16.88l2.728-2.728a2.313,2.313,0,0,1,1.7-.682,2.655,2.655,0,0,1,1.8.682Z" transform="translate(46.333 231)" fill="#d4e5ef"/>
+    </g>
+  </g>
+</svg>

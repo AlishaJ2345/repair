@@ -1,0 +1,39 @@
+<h2 mat-dialog-title>Camera Not Operational</h2>
+
+<mat-dialog-content>
+  <p *ngIf="data == 'no camera detected'">
+    Your Device has no camera!<br>
+    <span>Click on the icon in the top left of the address bar and allow camera...</span><br>
+    Then Click Try again.
+  </p>
+  <p *ngIf="data == 'camera detected but permissions waiting'">
+    You have not allowed use of the camera within 5 seconds!<br>
+    <span>Click on the icon in the top left of the address bar and allow camera...</span><br>
+    Then Click Try again.
+  </p>
+  <p *ngIf="data == 'camera detected but permissions denied'">
+    You have denied the use of the camera!<br>
+    <span>Click on the icon in the top left of the address bar and allow camera...</span><br>
+    Then Click Try again.
+  </p>
+  <br>
+  OR
+  <br>
+  <label>Please enter the Code at the printing desk</label><br>
+  <input type="text" [(ngModel)]="code" name="code" matInput placeholder="Enter Code">
+  <span>{{ codeMatchError }}</span>
+
+</mat-dialog-content>
+<br>
+<mat-dialog-actions>
+  <div class="action" (click)="agree()">&nbsp; Enter Code &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+  </div>
+  <div class="action" (click)="decline()">&nbsp; Try Camera &nbsp;
+    <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+  </div>
+  <!--  <img (click)="agree()" src="../../assets/brand/buttons/accept-btn.png" alt="close dialog" />
+    <img (click)="agree()" src="../../assets/brand/buttons/change label-btn.png" alt="close dialog" />-->
+  <!--  <button mat-button-button (click)="decline()">Try Again</button>
+  <button mat-raised-button (click)="agree()">Enter Code</button>  -->
+</mat-dialog-actions>

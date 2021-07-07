@@ -1,0 +1,182 @@
+
+<div>
+  <div>
+    <div id="content">
+      <video id="remoteVideo" id="background" oncontextmenu="return false;" #hardwareVideo autoplay muted playsinline></video>
+      <video id="localVideo" id="self" oncontextmenu="return false;" #localVideo autoplay muted playsinline></video>
+      <div id="controls">
+       <div id="flex-container">
+       <!--    <div class="flex-item">
+
+          </div>  -->
+
+       <!--   <div class="spacer"></div>  -->
+          <!--Show the slider-->
+  <!--        <button class="filesbutton" (click)="toggleSlider()">
+            <mat-icon>volume_up</mat-icon>
+          </button>   -->
+
+    <!--      <div class="spacer"></div>
+          Show the slider
+          <div *ngIf="!showMuted">
+            <button class="filesbutton" (click)="muteMic()">
+              <mat-icon>mic</mat-icon>
+            </button>
+          </div>
+
+          <div *ngIf="showMuted">
+            <button class="filesbutton" (click)="muteMic()">
+              <mat-icon>mic_off</mat-icon>
+            </button>
+          </div>
+
+          <div class="spacer"></div>  -->
+
+          <div *ngIf="!isMobile">
+          <!--  <div class="spacer"></div>   -->
+            <!--ScreenShare-->
+            <button class="filesbutton flex-item" (click)="switcthStreams()">
+              <mat-icon>mobile_screen_share</mat-icon>
+            </button>
+          </div>
+
+    <!--      <div class="spacer"></div>
+          <button class="filesbutton" (click)="fullScreen()">
+            <mat-icon>open_in_new</mat-icon>
+          </button>  -->
+
+          <div class="spacer"></div>
+
+          <div *ngIf="isMobile">
+            <!--swap cam front to back to front-->
+            <button class="filesbutton flex-item" (click)="toggleCam()">
+              <mat-icon>videocam</mat-icon>
+            </button>
+            <div class="spacer"></div>
+          </div>
+
+          <div *ngIf="!isMobile">
+            <!--select one of the cmaera found-->
+            <button class="filesbutton flex-item" (click)="selectCam()">
+              <mat-icon>videocam</mat-icon>
+            </button>
+            <div class="spacer"></div>
+          </div>
+
+          <!--shared drawing-->
+          <button class="filesbutton flex-item" (click)="showDraw()">
+            <mat-icon>timeline</mat-icon>
+          </button>
+
+          <div class="spacer"></div>
+          <!--sharefiles-->
+          <button class="filesbutton flex-item" (click)="showFiles()">
+            <mat-icon>phonelink_ring</mat-icon>
+          </button>
+
+          <div class="spacer"></div>
+          <!--sharefiles-->
+          <button class="filesbutton flex-item" (click)="showStartVideo = !showStartVideo">
+            <mat-icon>build</mat-icon>
+          </button>
+
+          <div class="spacer"></div>
+          <!--end call button-->
+          <button class="filesbuttons flex-item" (click)="stopStream()">
+            <mat-icon>videocam_off</mat-icon>
+          </button>
+
+          <div class="spacer"></div>
+
+        </div>
+        <div class="marginbottom"></div>
+      </div>
+
+      <div *ngIf="camSelect" id="cameraSelector">
+        <mat-label>Camera</mat-label>
+        <mat-select (selectionChange)="changeSelectedCam($event.value)">
+          <mat-option *ngFor="let device of hardwareDevices" [value]="device.deviceId">
+            {{device.label}}
+          </mat-option>
+        </mat-select>
+      </div>
+
+      <div class="draw" [class.off]="!draw">
+        <div>
+          <canvas #myCanvas class="smCanv" height="370" width="280" (mousedown)="dragStart($event)" (touchstart)="dragTouchStart($event)"
+            (mousemove)="drag($event)" (touchmove)="dragTouch($event)" (mouseup)="dragEnd($event)" (touchend)="dragTouchEnd($event)"
+            (mouseleave)="dragEnd($event)" (touchleave)="dragTouchEnd($event)"></canvas>
+          <div *ngIf="draw">
+            <div id="flex-container">
+              <div (click)="color = 'black'" id="black" class="flex-item"></div>
+              <div (click)="color = 'green'" id="green" class="flex-item"></div>
+              <div (click)="color = 'red'" id="red" class="flex-item"></div>
+              <div (click)="color = 'blue'" id="blue" class="flex-item"></div>
+              <div (click)="color = 'grey'" id="grey" class="flex-item"></div>
+              <div (click)="clearCanvas()" id="clear" class="flex-item">Clear</div>
+              <div (click)="draw = !draw" id="close" class="flex-item">Close</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div *ngIf="showDnD" class="files" [class.off]="!showDnD">
+        <div>
+
+          <div *ngIf="PlayState">
+            <div>
+              <hr>
+              <input type="file" id="file" (change)="onFilesChangeManual($event)">
+            </div>
+
+            <div *ngIf="PlayState">
+              <hr>
+              <label>Pending Downloads</label>
+            </div>
+            <div *ngFor="let file of pendingFiles" class="pfile">
+              <div class="file-offer" (click)="allowFileForTransfer(file)">
+                <mat-icon>attachment</mat-icon>
+                &nbsp; file: {{file}}
+              </div>
+            </div>
+
+            <div>
+              <hr>
+              <div class="dropzone" appDnd (filesChangeEmiter)="onFilesChange($event)" [allowed_extensions]="['png', 'jpg', 'bmp', 'gif', 'pdf', 'docx', 'txt', '3mf','pptx','webm']">
+                <div class="text-wrapper">
+                  <div class="centered">{{ fileTransferState }}</div>
+                  <progress class="centered" value="{{ progress }}" max="100">100 %</progress>
+                  <br>File: {{filedescriptionName}}
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <hr>
+          <br><br>
+          <button class="closeDnd" (click)="showDnD = !showDnD">Close</button>
+        </div>
+      </div>
+
+
+      <div class="aligner diagnostic" [class.buttotop]="fullscreen">
+        <!--   DIAGNOSTIC INDICATORS-->
+        <div *ngIf="showStartVideo">
+          <div id="flex-container" class="moniter">
+            <div id="status" [style.background-color]="getSocketStatus()">IO</div>
+            <div id="status" [style.background-color]="getAudioStatus()">S</div>
+            <div id="status" [style.background-color]="getVideoStatus()">V</div>
+            <div id="status" [style.background-color]="getStatus()">State</div>
+            <div id="statusICE" [style.background-color]="getICEStatus()">ICE</div>
+            <div id="statusStream" [style.background-color]="getStreamStatus()">Stream</div>
+            <div id="statusData" [style.background-color]="getDataStatus()">Data</div>
+            <div id="statusP2P" [style.background-color]="getP2PStatus()">P2P</div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

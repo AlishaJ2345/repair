@@ -1,0 +1,10 @@
+.imgbutton{
+  padding: 0;
+  border: none !important;
+  background: none;
+}
+
+.icon{
+  height:20px;
+  width: auto;
+}

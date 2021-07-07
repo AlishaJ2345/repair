@@ -1,0 +1,53 @@
+<div class="form">
+  <div class="aligner">
+
+    <mat-card [ngStyle]="cardStyle">
+
+      <mat-card-header>
+        <mat-card-title>Student Notes</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+
+        <div class="back-light">
+          <h3>{{ student?.name }}</h3>
+          <mat-card-subtitle>{{ student?.email }}</mat-card-subtitle>
+          <img  class="profilePic" src="{{ profilePic }}" alt="pic">
+          <ngb-rating [(rate)]="currentRate">
+            <ng-template let-fill="fill" let-index="index">
+              <span class="star" [class.filled]="fill === 100" [class.bad]="index < 3">&#9733;</span>
+            </ng-template>
+          </ngb-rating>
+          <br>
+          <div class="radio" style="margin-top:10px;">
+            <mat-radio-group class="aligner" layout="row" (change)="radioChange($event)">
+              <mat-radio-button color="primary" value="interview">Interview.</mat-radio-button>
+              <mat-radio-button color="primary" [checked]="true" value="like">Like. </mat-radio-button>
+              <mat-radio-button color="primary" value="maybe">Maybe. </mat-radio-button>
+              <mat-radio-button color="primary" value="no">No. </mat-radio-button>
+            </mat-radio-group>
+          </div>
+          <br>
+          <div class="input">
+            <div class="notes">
+              <textarea ref-textarea placeholder="Make a note..." [(ngModel)]="notes" (keyup)="autoGrowTextZone($event)"
+                [ngModelOptions]="{standalone: true}"></textarea>
+            </div>
+          </div>
+        </div>
+
+      </mat-card-content>
+
+      <mat-dialog-actions>
+
+        <div class="action" (click)="postScan()">&nbsp; Submit &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+        </div>
+        <div class="action" (click)="navToScan()">&nbsp; cancel &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+        </div>
+
+      </mat-dialog-actions>
+
+    </mat-card>
+  </div>
+</div>

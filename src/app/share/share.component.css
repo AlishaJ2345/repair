@@ -1,0 +1,97 @@
+input[type="checkbox"]
+{
+    vertical-align:left;
+}
+
+.icon{
+  height:20px;
+  width: auto;
+}
+.action{
+  max-width: 220px;
+}
+.scanner{
+  max-width: 100px;
+  max-height: 50px;
+}
+.form-full-width {
+  width:320px;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  padding: 20px;
+}
+
+.input-full-width {
+  width:760px;
+  background-color: white;
+}
+button{
+  background-color: #0073AA;
+  color: white;
+}
+
+.large{
+  transform: scale(2);
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+.eventDetails{
+  width:240px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: white;
+  font-size: 14px;
+  
+}
+
+.columns {
+  text-align: center;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 0;
+}
+
+.center-content {
+  width: 200px;
+  margin: auto;
+}
+.right-div {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width:300px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 2px;
+  margin: 0 auto;
+  background-color:#fee0bf;
+}
+.center-img {
+  width:360px;
+  margin: 0 auto;
+}
+.product{
+  /*margin-left: 16px;*/
+  min-width: 160px;
+  max-width: 280px;
+  height: auto;
+  max-height: 640px;
+  text-align: center;
+  margin-bottom: 20px; /* same as fxLayoutGap for even distribution */
+}
+.mat-card{
+  width: 240px;
+}
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

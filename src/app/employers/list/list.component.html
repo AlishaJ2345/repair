@@ -1,0 +1,103 @@
+<form class="form-full-width">
+    <fieldset>
+        <h3 matTooltip="Search All Sharing Students">Student Profiles</h3>
+        <div *ngIf="gettingList">
+            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <div>
+
+
+            <div class="table">
+
+                <div *ngIf="dataSource">
+                    <mat-form-field class="search-form-field" floatLabel="never" matTooltip="Filter Table Results">
+                        <input matInput (keyup)="applyFilter()" [(ngModel)]="searchKey" placeholder="Search"
+                            autocomplete="off" [ngModelOptions]="{standalone: true}">
+                        <button mat-button (click)="onSearchClear()" matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+                <br>
+
+                <div class="mat-elevation-z8">
+                    <mat-table [dataSource]="dataSource" matTooltipPosition="above" matTooltip="Sortable Columns" matSort>
+
+                        <ng-container matColumnDef="pic_url">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <img class="picurl" src="{{element.pic_url}}">
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="name">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <mat-icon>arrow_drop_down</mat-icon> Name
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.name}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="email">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <mat-icon>arrow_drop_down</mat-icon> Email
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.email}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="uni">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <mat-icon>arrow_drop_down</mat-icon> Uni
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.uni}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="qual">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <mat-icon>arrow_drop_down</mat-icon> Qualification
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.qual}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="major">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header>
+                                <mat-icon>arrow_drop_down</mat-icon> Major
+                            </mat-header-cell>
+                            <mat-cell *matCellDef="let element"> {{element.major}}</mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="cv_url">
+                            <mat-header-cell *matHeaderCellDef mat-sort-header> CV </mat-header-cell>
+                            <mat-cell *matCellDef="let element">
+                                <a matTooltipPosition="left" matTooltip="Download CV" *ngIf="element.cv_url" href="{{element.cv_url}}" target="_blank"><mat-icon>attach_file</mat-icon></a>
+                            </mat-cell>
+                        </ng-container>
+
+                        <ng-container matColumnDef="Actions">
+                            <mat-header-cell *matHeaderCellDef></mat-header-cell>
+                            <mat-cell *matCellDef="let row; let i = index">
+
+                                <button mat-icon-button color="primary" matTooltipPosition="left" matTooltip="Review Candidate" (click)="inspect(i)">
+                                    <mat-icon>pageview</mat-icon>
+                                </button>
+                                &nbsp;
+                                <button mat-icon-button color="primary" matTooltipPosition="left" matTooltip="Shortlist Candidate" (click)="storeCandidate(i)">
+                                    <mat-icon>save_alt</mat-icon>
+                                </button>
+
+                            </mat-cell>
+                        </ng-container>
+
+                        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+
+                    </mat-table>
+
+                    <mat-paginator [pageSizeOptions]="[5, 10, 20, 100]" [pageSize]="100" showFirstLastButtons></mat-paginator>
+
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+</form>

@@ -1,0 +1,27 @@
+<!-- this is the authentcate/confirm view from email-->
+
+<div class="right-div">
+    <div class="center-img">
+        <mat-card>
+            <mat-card-header>
+                <!--  <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{ qricon }}" alt="pic">  -->
+                <mat-card-title>Email Verification</mat-card-title>
+            </mat-card-header>
+
+            <mat-card-content>
+                <div class="box" *ngIf="isChecking; else lock">
+                    <div id="loading"></div>
+                </div>
+                <ng-template #lock>
+                    <img src="../../assets/images/lock.png" style="height:100px;width:100px;" alt="confirming email" />
+                </ng-template>
+                
+            </mat-card-content>
+
+            <mat-card-content>
+                <p>{{ message }}</p>
+            </mat-card-content>
+
+        </mat-card>
+    </div>
+</div>

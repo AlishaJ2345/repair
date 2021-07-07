@@ -1,0 +1,7 @@
+.picurl{
+    height:auto;
+    width:40px;
+}
+.picurl:hover{
+    width:100px;
+}

@@ -1,0 +1,38 @@
+{
+  "index": "/index.html",
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": [
+          "/favicon.ico",
+          "/index.html",
+          "/*.css",
+          "/*.js"
+        ]
+      }
+    }, {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": [
+          "/assets/**"
+        ],
+        "urls":["db.onlinewebfonts.com/c/93d79a6ea19a56ea21dd70993bec54bd?family=HeliaCoreW01-Medium"]
+      }
+    }
+  ],
+  "dataGroups": [
+    {
+      "name": "loginapi",
+      "urls": ["https://jbconnect.co/api/**"],
+      "cacheConfig": {
+        "maxSize": 20,
+        "maxAge":"7d",
+        "strategy": "freshness"
+      }
+    }
+  ]
+}

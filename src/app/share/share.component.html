@@ -1,0 +1,71 @@
+<div class="form">
+
+  <div>
+    <div class="aligner">
+      <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="getCardStyle()">
+        <mat-card-header>
+          <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{user.pic_url}}" alt="pic">
+          <mat-card-title>Share Identity</mat-card-title>
+          <mat-card-subtitle>show to share</mat-card-subtitle>
+        </mat-card-header>
+        <div class="right-div">
+          <ngx-qrcode [qrc-element-type]="'img'" [qrc-value]="value" qrc-errorCorrectionLevel="L">
+          </ngx-qrcode>
+        </div>
+        <br>
+        <mat-card-content>
+
+          <div *ngIf="viewShareSettings">
+            <div class="eventDetails">
+
+              <h3>Choose what to share</h3>
+              <hr>
+              <mat-slide-toggle class="example-margin" (change)="makeQR()" [(ngModel)]="shareName">Name: {{ user.name
+                }}</mat-slide-toggle>
+              <hr>
+              <mat-slide-toggle class="example-margin" (change)="makeQR()" [(ngModel)]="shareEmail">Email: {{
+                user.email}}</mat-slide-toggle>
+              <hr>
+              <mat-slide-toggle class="example-margin" (change)="makeQR()" [(ngModel)]="sharePicture">Share Picture</mat-slide-toggle>
+              <hr>
+              <mat-slide-toggle class="example-margin" (change)="makeQR()" [(ngModel)]="shareProfile">Share Profile</mat-slide-toggle>
+              <div style="min-height:80px">
+
+                <div *ngIf="employer && shareProfile">
+                  Company: {{profile.company}}<br>
+                  Position: {{profile.position}}<br>
+                  Address: {{profile.address}}<br>
+                  Location: {{profile.location}}<br>
+                </div>
+
+                <div *ngIf="student && shareProfile">
+                  Uni: {{profile.uni}}<br>
+                  Programme: {{profile.qual}}<br>
+                  Major: {{profile.major}}<br>
+                  Location: {{profile.location}}<br>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+
+          <div class="aligner">
+            <!--  <button mat-raised-button (click)="toggleSettings()">Change my Permissions</button>  -->
+            <div class="action" (click)="toggleSettings()">&nbsp; Permissions &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+            </div>
+
+            <!--  <button mat-raised-button color="primary" (click)="navToScan()">Scan A Freind</button>   -->
+            <div class="action" (click)="navToScan()">&nbsp; Scan A Freind &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+            </div>
+          </div>
+
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

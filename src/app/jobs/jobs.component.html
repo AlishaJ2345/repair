@@ -1,0 +1,135 @@
+
+<!-- <div class="form">
+  <div class="aligner">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+      <mat-card-header>
+        <mat-card-title>Companies</mat-card-title>
+    <!--    <label>Order By</label><br>
+        <button mat-raised-button (click)="sortBooth()">Booth</button>
+        <button mat-raised-button (click)="sortName()">Name</button>  -->
+
+      <!-- </mat-card-header> -->
+
+  <!--    <mat-card-content>
+        <label>Order By</label><br>
+          <button mat-raised-button color="primary" (click)="sortBooth()">Booth</button>
+          <button mat-raised-button color="primary" (click)="sortName()">Name</button>
+      </mat-card-content>  -->
+
+      <!-- <mat-radio-group aria-label="I am a:" (change)="radioChange($event)">
+        <mat-radio-button [checked]="true" value="1">Sort By Booth &nbsp; </mat-radio-button>
+        <mat-radio-button value="2">Sort By Name &nbsp; </mat-radio-button>
+      </mat-radio-group>
+      <br><br>
+      
+      <mat-card-content *ngFor="let job of jobs; let i = index;">
+        <div *ngIf="jobs.length > 0" class="aligner d-flex flex-row flex-wrap">
+          <div class="p-2">
+            <img src="{{ job?.logo_url }}" style="width:100px;height:auto" /><br>
+            
+            Booth: {{job?.booth_number}} <br>
+            Level: {{job?.building_level}}
+          </div>
+          <div class="p-2">
+            <ul>
+              <div>
+
+                <div class="back-light" [ngStyle]="speakerStyle">
+                    <h2 class="cname">{{ job?.org_name }}</h2>
+                    {{job?.description}}<br>
+                  <div [hidden]="job?.media_manager == ''">
+                    Media Contact: {{ job?.media_manager }}<br>
+                  </div>
+
+                  <div [hidden]="job.jobs_url == ''">
+                    <a href="{{job?.jobs_url}}" target="_blank" *ngIf="job.jobs_url != ''">Jobs</a><br>
+                  </div>
+
+                  <div [hidden]="job.graduate_url == ''">
+                    <a href="{{ job?.graduate_url }}" target="_blank" *ngIf="job.graduate_url != ''">Grad Program</a><br>
+                  </div>
+
+                  <div [hidden]="job.recruit_url == ''">
+                    <a href="{{ job?.recruit_url }}" target="_blank" *ngIf="job.recruit_url != ''">Recruiter Page</a><br>
+                  </div>
+
+                  <div [hidden]="job.org_linkedin == ''">
+                    <a href="{{ job?.org_linkedin }}" target="_blank" *ngIf="job.org_linkedin != ''">LinkedIn</a><br>
+                  </div>
+
+                  <div [hidden]="job?.org_facebook == ''">
+                    <a href="{{ job?.org_facebook }}" target="_blank" *ngIf="job.org_facebook != ''">FaceBook</a><br>
+                  </div>
+
+                  <div [hidden]="job?.org_twitter == ''">
+                    <a href="{{ job?.org_twitter }}" target="_blank" *ngIf="job?.org_twitter != ''">Twitter</a><br>
+                  </div>
+
+                  <div [hidden]="job?.org_instagram == ''">
+                    <a href="{{ job?.org_instagram }}" target="_blank" *ngIf="job?.org_instagram != ''">Instagram</a><br><br>
+                  </div>
+
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </mat-card-content> -->
+
+    <!-- </mat-card>
+    <br>
+  </div>
+</div> --> 
+
+<!-- <mat-toolbar color="primary">
+    <span>Card view demo</span>
+</mat-toolbar>
+
+<div class="content" layout="row" layout-wrap>
+  <div fxLayout="row wrap" fxLayout Gap="16px">
+      <div fxFlex="25%" *ngFor="let num of [1,2,3,4,5,6,7]">
+        <mat-card class="mat-elevation-z4">
+          <mat-card-header>
+            <mat-card-title>ANZ {{num}}</mat-card-title>
+          </mat-card-header>
+          <img mat-card-image src="images/ANZ_logo.png">
+          <mat-card-content>
+            <p>Booth 123</p>
+            <p>Level 1</p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button>SEE MORE</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+  </div>
+
+</div> -->
+
+<div _ngcontent-bcn-c3 class="aligner">
+  <h3 _ngcontent-bcn-c3>Companies</h3>
+</div>
+<div _ngcontent-bcn-c3>
+  <mat-grid-list _ngcontent-bcn-c3 class="mat-grid-list" cols="3" rowheight="1:1" style="padding-bottom: calc(3 *((33.3% - 12px) * 1) + 0px + 32px);">
+    <div>
+      <mat-grid-tile _ngcontent-ban-c3 class="mat-grid-tile" role="grid" style="left: 0px; width: calc((33.3% - 12px) * 1 + 0px); margin-top: 0px; padding-top: calc ((33.3% - 12px) * 1 + 0px);">
+         <figure class="mat-figure">
+           <div _ngcontent-ban-c3 class="info">
+             <h2>ANZ</h2>
+             <img _ngcontent-ban-c3 alt="ANZ" src="images/ANZ_logo">
+             Booth: {{job?.booth_number}} <br>
+             Level: {{job?.building_level}}
+             <p></p>
+           </div>
+         </figure>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</div>
+
+<ag-grid-angular 
+	style="width: 500px; height: 500px;" 
+	class="ag-theme-balham"
+	[rowData]="rowData" 
+	[columnDefs]="columnDefs">
+</ag-grid-angular>

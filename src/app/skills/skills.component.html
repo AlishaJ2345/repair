@@ -1,0 +1,99 @@
+<div class="form">
+    <div>
+        <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="getCardStyle()" class="aligner">
+            <form [formGroup]="SkillForm">
+                <fieldset>
+                    <br>
+                    <h3>Add A Skill</h3>
+                    <div class="back-light">
+
+                        <div class="labelchar">Skill Name</div>
+                        <input type="text" formControlName="name" name="name" placeholder="Skill Name" required>
+
+                        <div *ngIf="s.name.errors?.maxlength">
+                            Too Many Charactors in field!
+                        </div>
+
+                        <div class="labelchar">Details</div>
+                        <textarea type="text" formControlName="details" name="details" placeholder="Skill Detail..."
+                            required></textarea>
+
+                        <div *ngIf="s.details.errors?.maxlength">
+                            Too Many Charactors in field!
+                        </div>
+
+                        <div class="labelchar">Skill Level</div>
+                        <mat-select formControlName="experience" placeholder="Novice" class="likeInput">
+                            <mat-option value="Novice">Novice</mat-option>
+                            <mat-option value="Intermediate">Intermediate</mat-option>
+                            <mat-option value="Expert">Expert</mat-option>
+                        </mat-select>
+
+                        <div class="labelchar">Proficiency 1-10</div>
+                        <input type="number" formControlName="stars" name="stars" placeholder="Number" required>
+
+                        <div *ngIf="s.stars.errors?.maxlength">
+                            Too Many Charactors in field!
+                        </div>
+                        <br>
+                        <div *ngIf="skillLoad">
+                            <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                        </div>
+
+                        <br>
+
+                        <div class="action" [hidden]="SkillForm.invalid" (click)="storeSkill()">
+                            &nbsp;Save Skill &nbsp;
+                            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+                        </div>
+
+                        <br>
+
+                        <div class="action" (click)="cancel()">
+                            &nbsp;Cancel &nbsp;
+                            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+                        </div>
+                        <br>
+                    </div>
+
+                </fieldset>
+            </form>
+
+
+        </mat-card>
+        <mat-card [ngStyle]="getCardStyle()">
+            <mat-table class="mat-elevation-z8" [dataSource]="dataSource" [ngStyle]="getTableStyle()" matSort>
+
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+                    <mat-cell *matCellDef="let Skill"> {{Skill.name}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="details">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Details </mat-header-cell>
+                    <mat-cell *matCellDef="let Skill"> {{Skill.details}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="experience">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Experience </mat-header-cell>
+                    <mat-cell *matCellDef="let Skill"> {{Skill.experience}}</mat-cell>
+                </ng-container>
+
+                <ng-container matColumnDef="stars">
+                    <mat-header-cell *matHeaderCellDef mat-sort-header> Stars </mat-header-cell>
+                    <mat-cell *matCellDef="let Skill"> {{Skill.stars}}</mat-cell>
+                </ng-container>
+
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+            </mat-table>
+            <mat-paginator [pageSizeOptions]="[5, 10, 20]" [ngStyle]="getTableStyle()" showFirstLastButtons></mat-paginator>
+
+        </mat-card>
+
+
+    </div>
+
+
+
+</div>

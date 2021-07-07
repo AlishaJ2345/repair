@@ -1,0 +1,97 @@
+.app-toolbar{
+    background-color: #dd1c00;
+    color: white;
+}
+.inline-img{
+    transform: translateY(20px);
+    z-index: 30;
+}
+.tb2{
+    text-align: center;
+    color: white;
+    background-color: #f65e00;
+    height:32px;
+}
+h2{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.example-fill-remaining-space {
+    /* This fills the remaining space, by using flexbox. 
+       Every toolbar row uses a flexbox row layout. */
+    flex: 1 1 auto;
+  }
+  .initial{
+    width: 160px;
+    height: 100px;
+    transform: translateY(18px);
+  }
+
+  .header{
+    width:100%;
+    height:auto;
+    background-color: white;
+    background-image: url("../../assets/brand/headers/mobile_sm1.png");
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+
+  .fdc{
+      background-color: #FDC581;
+      max-height: 40px;
+  }
+  .expandedHeader{
+      background-color: #F26522;
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo{
+    position: absolute;
+    top: 0;
+    left: 5%;
+    width: 10%;
+    height: auto;
+    background: url('../../assets/brand/logos/AUT_Logo-mobile_sm2@2x.png') no-repeat center;
+  }
+  .F2{
+    background-color: #F26522;
+    background: url('../../assets/brand/headers/mobile_header_sm1.png') no-repeat center;
+    background-size: cover;
+  }
+
+  .testing{
+      width: 80%;
+  }
+  .header{
+    height: 0;
+    padding: 0; /* remove any pre-existing padding, just in case */
+    padding-bottom: 20%; /* for a 4:3 aspect ratio */
+    background-color: #F26522;
+    background-image: url("../../assets/brand/headers/logo_header-desktop.png");
+    background-position: center center;
+/*    background-size: 100%; */
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+  .overlayWidth{
+      width: 60%;
+  }
+  .header-wrapper-sm{
+      max-height: 64px;
+      width: 100%;
+      background-color: #F26522;
+      z-index: 10;
+  }
+.moveleft{
+    transform: translateX(-35px);
+}
+.nopadding{
+    padding: 0px;
+}
+
+  /* 134px high on desktop */
+  /* 79px high on tablet */
+  /* 64px high on mobile */

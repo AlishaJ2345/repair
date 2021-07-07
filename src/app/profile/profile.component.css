@@ -1,0 +1,44 @@
+
+.right-div {
+  height: auto;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  max-width:240px;
+  text-align: left;
+  padding: 20px;
+  border-radius: 3px;
+  margin: 2px;
+  margin: 0 auto;
+  /*background-image: url('../../assets/pics/milkyway.jpg');*/
+}
+
+.center-img {
+  width:280px;
+  margin: 0 auto;
+}
+.product{
+  /*margin-left: 16px;*/
+  min-width: 160px;
+  max-width: 240px;
+  height: auto;
+  text-align: center;
+  margin-bottom: 20px; /* same as fxLayoutGap for even distribution */
+}
+.mat-card{
+  width:250px;
+}
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.action{
+  max-width: 220px;
+}
+.icon{
+  height:20px;
+  width: auto;
+}

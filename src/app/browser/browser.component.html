@@ -1,0 +1,21 @@
+<h2 mat-dialog-title>Browser Support Limited</h2>
+
+<mat-dialog-content>
+  <p *ngIf="data == 1">
+    For Full functionality please open in Safari Browser.
+  </p>
+  <p *ngIf="data == 2">
+      For Full functionality please open in Chrome or FireFox or Opera Browsers.
+  </p>
+  <p *ngIf="data == 3">
+      For Full functionality please open in Chrome Browser or FireFox or Opera Browsers.
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <div class="action" (click)="agree()">&nbsp; ok &nbsp; 
+        <i><img class="icon" src="../../assets/brand/icons/fa.svg"/></i> &nbsp; 
+      </div>
+    <!--<button mat-raised-button (click)="agree()">Close</button>  -->
+    <!--<img (click)="agree()" src="../../assets/brand/buttons/accept-btn.png" alt="close dialog" />-->
+  <!--<button mat-raised-button (click)="agree()">OK</button> -->
+</mat-dialog-actions>

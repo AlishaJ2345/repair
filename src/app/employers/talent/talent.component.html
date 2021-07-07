@@ -1,0 +1,27 @@
+<mat-card class="example-card">
+
+    <mat-tab-group mat-align-tabs="center" [selectedIndex]="tabSelected" [dynamicHeight]='true'>
+        
+        <mat-tab label="Candidate Search">
+            <app-list (selected)='setCandidate($event)'></app-list>
+        </mat-tab>
+
+        <mat-tab label="Review Candidate">
+            <app-candidate (back)='goBack($event)' [candidate]="candidate"></app-candidate>
+        </mat-tab>
+        
+        <mat-tab label="Review QR Scans">
+            <app-review></app-review>
+        </mat-tab>
+
+        <mat-tab label="Skill Search">
+            <app-search></app-search>
+        </mat-tab>
+
+        <mat-tab label="Short Listed">
+            <app-shortlist></app-shortlist>
+        </mat-tab>
+
+    </mat-tab-group>
+
+</mat-card>

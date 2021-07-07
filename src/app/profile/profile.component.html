@@ -1,0 +1,65 @@
+<div class="form">
+  <div class="aligner">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="getCardStyle()">
+      <mat-card-header>
+        <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{key.pic_url}}" alt="pic">
+        <mat-card-title>Profile</mat-card-title>
+      </mat-card-header>
+      <app-photo-uploads (valueChange)='setPicURL($event)'></app-photo-uploads>
+
+      <div class="aligner">
+        <div *ngIf="key.type == 'user' && profile">
+
+          <mat-card-header>
+            <mat-card-title>Name: {{ key.name }}</mat-card-title>
+            <mat-card-subtitle>Email: {{ key.email }}</mat-card-subtitle>
+            <mat-card-subtitle>University: {{ profile.uni }}</mat-card-subtitle>
+            <mat-card-subtitle>Qualification: {{ profile.qual }}</mat-card-subtitle>
+            <mat-card-subtitle>Major: {{ profile.major }}</mat-card-subtitle>
+          <!--  <mat-card-subtitle>Year: {{ profile.year }}</mat-card-subtitle>  -->
+            <mat-card-subtitle>Location: {{ profile.location }}</mat-card-subtitle>
+          </mat-card-header>
+          <mat-card-actions>
+
+            <div class="action" (click)="navToUpdate()">&nbsp; Update Profile &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+            </div>
+            <div class="action" routerLink="/changepassword">&nbsp; Change Password &nbsp;
+              <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+            </div>
+          </mat-card-actions>
+        </div>
+
+        <div *ngIf="key.type == 'employer' && profile">
+
+          <mat-card-header>
+            <mat-card-title>Name: {{ key.name }}</mat-card-title>
+            <mat-card-subtitle>Email: {{ key.email }}</mat-card-subtitle>
+            <mat-card-subtitle>Company: {{ profile.company }}</mat-card-subtitle>
+            <mat-card-subtitle>Position: {{ profile.position }}</mat-card-subtitle>
+            <mat-card-subtitle>Address: {{ profile.address }}</mat-card-subtitle>
+            <mat-card-subtitle>Location: {{ profile.location }}</mat-card-subtitle>
+          </mat-card-header>
+          <!--    <mat-card-actions>
+            <button mat-raised-button (click)="navToUpdate()" color="primary">Update Profile</button>
+            <button mat-raised-button routerLink="/changepassword" color="accent">Change Password</button>
+          </mat-card-actions>   -->
+          <mat-card-actions>
+            <div class="aligner">
+              <div class="action" (click)="navToUpdate()">&nbsp; Update Profile &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+              <div class="action" routerLink="/changepassword">&nbsp; Change Password &nbsp;
+                <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+              </div>
+            </div>
+
+          </mat-card-actions>
+
+        </div>
+
+      </div>
+
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,163 @@
+<div class="parent">
+  <div class="aligner">
+
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="getCardStyle()">
+
+      <mat-card-header>
+        <mat-card-title>Scan QR To Enter</mat-card-title>
+      </mat-card-header>
+
+      <div class="center-img">
+    <!--    <div *ngIf="showSelect">
+          <mat-select color="accent" (change)="onChange($event.target.value)" placeholder="SwapCameras">
+            <mat-option *ngFor="let device of devices" value="{{device.deviceId}}">{{device.label}}</mat-option>
+          </mat-select>
+        </div>  -->
+
+
+        <div class="left-div">
+          <div class="outer-container">
+            <div class="inner-container">
+
+        <!--      <div class="video-overlay-tl" *ngIf="found && hasPermission && camStarted">
+                <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tl.png">
+              </div>
+
+              <div class="video-overlay-tr" *ngIf="found && hasPermission && camStarted">
+                <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tr.png">
+              </div>
+
+              <div class="video-overlay-bl" *ngIf="found && hasPermission && camStarted">
+                <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_bl.png">
+              </div>
+
+              <div class="video-overlay-br" *ngIf="found && hasPermission && camStarted">
+                <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_br.png">
+              </div>  -->
+
+              <!--    <zxing-scanner #scanner [scannerEnabled]="camStarted" [autofocusEnabled]="true" [device]="selectedDevice"
+                      (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>   -->
+              <!--<div [hidden]="!hasCameras">
+                  <zxing-scanner #scanner class="test-class" start="true" [device]="selectedDevice" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+              </div>-->
+
+              <!--   <div [hidden]="!hasCameras">  -->
+              <!--    <zxing-scanner #scanner [scannerEnabled]="camStarted" [autofocusEnabled]="true" [device]="selectedDevice"
+                (camerasFound)="displayCameras($event)" (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>  -->
+
+              <!--    <zxing-scanner
+                [scannerEnabled]="camStarted"
+                [autofocusEnabled]="true"
+                [device]="selectedDevice"
+                (scanSuccess)="handleQrCodeResult($event)"
+                ></zxing-scanner>  -->
+              <!--      <zxing-scanner></zxing-scanner>   -->
+              <div [hidden]="!hasDevices">
+
+            <!--    <header>
+                  <select (change)="onDeviceSelectChange($event.target.value)">
+                    <option value="" [selected]="!currentDevice">No Device Selected</option>
+                    <option *ngFor="let device of availableDevices" [value]="device.deviceId" [selected]="currentDevice && device.deviceId === currentDevice.deviceId">{{
+                      device.label }}</option>
+                  </select>
+                </header>  -->
+
+                <div class="video-overlay-tl" *ngIf="camStarted">
+                  <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tl.png">
+                </div>
+  
+                <div class="video-overlay-tr" *ngIf="camStarted">
+                  <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_tr.png">
+                </div>
+  
+                <div class="video-overlay-bl" *ngIf="camStarted">
+                  <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_bl.png">
+                </div>
+  
+                <div class="video-overlay-br" *ngIf="camStarted">
+                  <img style="height:60px;width:60px;" class="over" src="../../assets/images/Reticle_br.png">
+                </div>
+
+                <zxing-scanner #scanner
+
+
+                  [enable]="camStarted" [autofocusEnabled]="true"
+                  (scanSuccess)="handleQrCodeResult($event)"
+                  (scanComplete)="scanCompleteHandler($event)"></zxing-scanner>
+
+                <div *ngIf="scanprogress && camStarted">
+                  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+                </div>
+                
+              </div>
+              <!--     </div>   -->
+            </div>
+          </div>
+        </div>
+
+        <div class="aligner" *ngIf="found">
+          <ng-container *ngIf="hasPermission === undefined">
+
+            <h2>Waiting for permissions.</h2>
+  
+            <blockquote>
+              If your device does not has cameras, no permissions will be asked.
+            </blockquote>
+  
+          </ng-container>
+  
+          <ng-container *ngIf="hasPermission === false">
+  
+            <h2>You denied the camera permission, we can't scan anything without it. 😪</h2>
+  
+          </ng-container>
+  
+          <ng-container *ngIf="hasDevices === undefined">
+  
+            <h2>Couldn't check for devices.</h2>
+  
+            <blockquote>
+              This may be caused by some security error.
+            </blockquote>
+  
+          </ng-container>
+  
+          <ng-container *ngIf="hasDevices === false">
+  
+            <h2>No devices were found.</h2>
+  
+            <blockquote>
+              I believe your device has no media devices attached to.
+            </blockquote>
+  
+          </ng-container>
+  
+          <footer>
+            <table class="table-scanner-state">
+              <thead>
+                <tr>
+                  <th>Status</th>
+                  <th>Property</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>{{ stateToEmoji(hasDevices) }}</td>
+                  <td>Devices</td>
+                </tr>
+                <tr>
+                  <td>{{ stateToEmoji(hasPermission) }}</td>
+                  <td>Permissions</td>
+                </tr>
+              </tbody>
+            </table>
+          </footer>
+        </div>
+
+      </div>
+      <!--  <button *ngIf="retryScan" mat-raised-button (click)="retry()">Restart Scan</button>  -->
+
+    </mat-card>
+  </div>
+
+</div>

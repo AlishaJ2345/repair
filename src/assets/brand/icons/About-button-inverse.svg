@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="95.87" height="95.87" viewBox="0 0 95.87 95.87">
+  <g id="Group_2405" data-name="Group 2405" transform="translate(-30 -218.217)">
+    <path id="btn-bg" d="M7,0H88.87a7,7,0,0,1,7,7V88.87a7,7,0,0,1-7,7H7a7,7,0,0,1-7-7V7A7,7,0,0,1,7,0Z" transform="translate(30 218.217)" fill="#536972"/>
+    <g id="Group_2404" data-name="Group 2404">
+      <text id="ABOUT" transform="translate(59 296)" fill="#d4e5ef" font-size="12" font-family="HeliaCore-Medium, Helia Core" font-weight="500"><tspan x="0" y="0">ABOUT</tspan></text>
+      <g id="Group_2399" data-name="Group 2399" transform="translate(50 230)">
+        <g id="Group_2398" data-name="Group 2398" transform="translate(22.82 11.536)">
+          <path id="Path_70595" data-name="Path 70595" d="M38.252,24.573c3.17,0,4.348-1.068,4.348-3.937,0-2.933-1.18-4.023-4.348-4.023S33.9,17.7,33.9,20.636C33.9,23.506,35.082,24.573,38.252,24.573Z" transform="translate(-33.904 -16.613)" fill="#d4e5ef"/>
+          <rect id="Rectangle_1379" data-name="Rectangle 1379" width="8.175" height="20.727" transform="translate(0.237 10.402)" fill="#d4e5ef"/>
+        </g>
+        <path id="Path_70596" data-name="Path 70596" d="M27.405,2a25.405,25.405,0,1,0,25.4,25.405A25.405,25.405,0,0,0,27.405,2Zm0,46.895a21.49,21.49,0,1,1,21.49-21.49A21.514,21.514,0,0,1,27.405,48.895Z" fill="#d4e5ef"/>
+      </g>
+    </g>
+  </g>
+</svg>

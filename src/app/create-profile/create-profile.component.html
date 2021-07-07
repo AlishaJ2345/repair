@@ -1,0 +1,154 @@
+<div class="form">
+  <div *ngIf="user.type == 'user'">
+    <form [formGroup]="Sprofileform" class="form-full-width">
+      <fieldset>
+        <legend>Complete Profile</legend>
+
+        <app-photo-uploads (valueChange)='setPicURL($event)'></app-photo-uploads>
+        <br>
+
+        <div *ngIf="picload">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+        <br>
+
+        <div class="back-light">
+
+          <div class="labelchar">University</div>
+          <input type="text" formControlName="uni" name="uni" placeholder="University" required>
+
+          <div *ngIf="s.uni.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Qualification</div>
+          <input type="text" formControlName="qual" name="qual" placeholder="Qualification" required>
+
+          <div *ngIf="s.qual.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Major</div>
+          <input type="text" formControlName="major" name="major" placeholder="Major" required>
+
+          <div *ngIf="s.major.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <div class="labelchar">Location</div>
+          <input type="text" formControlName="location" name="location" placeholder="Location" required>
+
+          <div *ngIf="s.location.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+          <br>
+
+        </div>
+
+        <div *ngIf="profileLoad">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <br>
+
+        <div class="action" [hidden]="Sprofileform.invalid" (click)="storeStudent()">
+          &nbsp;Save Profile &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+      </fieldset>
+    </form>
+  </div>
+
+  <div *ngIf="user.type == 'employer'">
+    <form [formGroup]="Eprofileform" class="form-full-width">
+      <fieldset>
+        <legend>Complete Profile</legend>
+
+        <app-photo-uploads (valueChange)='setPicURL($event)'></app-photo-uploads>
+        <br>
+
+        <div class="back-light">
+
+      <!--    <mat-form-field class="input-full-width">
+            <input type="text" formControlName="name" name="name" matInput placeholder="Name">
+            <mat-hint align="end">Enter Name.</mat-hint>
+          </mat-form-field>   -->
+
+          <div class="labelchar">Name</div>
+          <input type="text" formControlName="name" name="name" placeholder="Name" required>
+
+          <div *ngIf="e.name.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+       <!--   <mat-form-field class="input-full-width">
+            <input type="text" formControlName="company" name="company" matInput placeholder="Company name">
+            <mat-hint align="end">Enter Company name.</mat-hint>
+          </mat-form-field>   -->
+
+          <div class="labelchar">Company</div>
+          <input type="text" formControlName="company" name="company" placeholder="Company" required>
+
+          <div *ngIf="e.company.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+      <!--    <mat-form-field class="input-full-width">
+            <input type="text" formControlName="position" name="position" matInput placeholder="Position">
+            <mat-hint align="end">Enter Position.</mat-hint>
+          </mat-form-field>   -->
+
+          <div class="labelchar">Position</div>
+          <input type="text" formControlName="position" name="position" placeholder="Position" required>
+
+          <div *ngIf="e.position.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+    <!--      <mat-form-field class="input-full-width">
+            <input type="text" formControlName="address" name="address" matInput placeholder="Address">
+            <mat-hint align="end">Enter Company Address.</mat-hint>
+          </mat-form-field>   -->
+
+          <div class="labelchar">Company Address</div>
+          <input type="text" formControlName="address" name="address" placeholder="Address" required>
+
+
+          <div *ngIf="e.address.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+    <!--      <mat-form-field class="input-full-width">
+            <input type="text" formControlName="location" name="location" matInput placeholder="Location">
+            <mat-hint align="end">Enter Location of Company.</mat-hint>
+          </mat-form-field>    -->
+
+          <div class="labelchar">Location of Company</div>
+          <input type="text" formControlName="location" name="location" placeholder="Location" required>
+
+
+          <div *ngIf="e.location.errors?.maxlength">
+            Too Many Charactors in field!
+          </div>
+
+          <br>
+
+        </div>
+
+        <div *ngIf="profileLoad">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+
+        <br>
+
+        <div class="action" [hidden]="Eprofileform.invalid" (click)="storeEmployer()">&nbsp;Save Profile &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+      </fieldset>
+
+    </form>
+  </div>
+
+</div>

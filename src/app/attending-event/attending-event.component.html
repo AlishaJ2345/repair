@@ -1,0 +1,41 @@
+
+<!-- attending event layout-->
+<div class="form">
+  <div class="aligner">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" *ngIf="event" [ngStyle]="getCardStyle()">
+      <mat-card-header>
+  <!--      <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{accountPic}}" alt="pic">  -->
+        <mat-card-title class="card-container-right">{{ event.event_name }}</mat-card-title>
+      </mat-card-header>
+      <div *ngIf="loadingEvent; else loaded">
+        <div *ngIf="gettingEvent">
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </div>
+      </div>
+      <ng-template #loaded>
+        <div>
+
+          <div class="back-light" (hover)="fromNow(event.start_date)">
+
+              <h3>{{ event.location }}</h3>
+              <b>{{ event.start_date | dateFormat}}</b><br>
+              <b>Starts:</b>{{ fromNow(event.start_date) }}<br>
+            <!--  <p [innerText]="code">{{ event.content }}</p>   -->
+              <div [innerHTML]=" event.content "></div>
+              
+
+          </div>
+          <br>
+          <div class="photo">
+            <img src="{{ currentPic }}" style="width:90%;" id="eventpic" alt="Upload your profile pic">
+          </div>
+
+          <!--[ngStyle]="getPicStyle()"-->
+
+        </div>
+
+
+      </ng-template>
+    </mat-card>
+  </div>
+</div>

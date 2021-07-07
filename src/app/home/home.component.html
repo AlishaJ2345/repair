@@ -1,0 +1,111 @@
+<div class="form">
+  <div class="aligner">
+
+    <mat-card [ngStyle]="cardStyle">
+
+      <mat-card-content>
+        <h1>hello glen</h1>
+
+        <div>
+          <mat-grid-list cols="4" rowHeight="1:1" gutterSize="{{gutterSize}}">
+
+            <div *ngIf="!isLoggedIn">
+              <mat-grid-tile role="button">
+                <div (click)="navToRegister()" class="info">
+                  <img src="../../assets/brand/icons/register_but.svg" alt="Forest" class="butt2">
+                </div>
+              </mat-grid-tile>
+            </div>
+
+            <mat-grid-tile role="button">
+              <div (click)="navToPrint()" class="info">
+                <img src="../../assets/brand/icons/print_label-60h.svg" alt="Forest" class="butt2">
+              </div>
+            </mat-grid-tile>
+
+            <mat-grid-tile role="button">
+              <div (click)="navToEvent()" class="info">
+                <img src="../../assets/brand/icons/info_but.svg" alt="info" class="butt2"><br>
+              </div>
+            </mat-grid-tile>
+
+            <div *ngIf="attendence.maps">
+              <mat-grid-tile role="button">
+                <div (click)="navToMaps()" class="info">
+                  <img src="../../assets/brand/icons/map_but.svg" alt="Snow" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+            </div>
+
+            <div *ngIf="attendence.speakers">
+              <mat-grid-tile role="button">
+                <div (click)="navToSpeakers()" class="info">
+                  <img src="../../assets/brand/icons/presenters_but.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+            </div>
+
+            <div *ngIf="attendence.jobs">
+              <mat-grid-tile role="button">
+                <div (click)="navToJobs()" class="info">
+                  <img src="../../assets/brand/icons/jobs_but.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+            </div>
+
+
+            <mat-grid-tile role="button">
+              <div (click)="navToFeedback()" class="info">
+                <img src="../../assets/brand/icons/feedback_but.svg" alt="Forest" class="butt2 flex-item"><br>
+              </div>
+            </mat-grid-tile>
+
+            <div *ngIf="isLoggedIn">
+
+              <mat-grid-tile role="button">
+                <div (click)="navToProfile()" class="info">
+                  <img src="../../assets/brand/icons/profile-200h.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+
+              <mat-grid-tile role="button">
+                <div (click)="navToScan()" class="info">
+                  <img src="../../assets/brand/icons/scan_200h.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+
+              <mat-grid-tile role="button">
+                <div (click)="navToShare()" class="info">
+                  <img src="../../assets/brand/icons/share-200h.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+
+              <mat-grid-tile role="button">
+                <div (click)="navToFriends()" class="info">
+                  <img src="../../assets/brand/icons/friends-200h.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>
+
+              <!--    <mat-grid-tile role="button">
+                <div (click)="logout()" class="info">
+                  <img src="../../assets/brand/icons/login-200h-drk.svg" alt="Forest" class="butt2 flex-item"><br>
+                </div>
+              </mat-grid-tile>  -->
+            </div>
+
+
+              <mat-grid-tile role="button">
+                <div (click)="navToLogin()" class="info">
+                  <img src="../../assets/brand/icons/login-200h.svg" alt="Forest" class="butt2">
+                </div>
+              </mat-grid-tile>
+
+
+          </mat-grid-list>
+        </div>
+
+      </mat-card-content>
+
+    </mat-card>
+  </div>
+</div>

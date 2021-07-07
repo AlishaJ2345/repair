@@ -1,0 +1,54 @@
+<button mat-icon-button [matMenuTriggerFor]="matMenu">
+  <img src="../../assets/brand/icons/burger_icon.svg" class="burger" />
+</button>
+
+<mat-menu #matMenu="matMenu" class="menu" [ngStyle]="getMenuStyle()">
+
+  <button routerLink="/home" mat-menu-item>
+    <img src="../../assets/brand/icons/home_icon.svg" class="burger" />
+    HOME</button>
+  <button routerLink="/event" mat-menu-item>
+    <img src="../../assets/brand/icons/menu_icon.svg" class="burger" />
+    INFORMATION</button>
+  <button routerLink="/maps" mat-menu-item>
+    <img src="../../assets/brand/icons/map_icon.svg" class="burger" />
+    MAPS</button>
+  <button routerLink="/speakers" mat-menu-item>
+    <img src="../../assets/brand/icons/presenters_icon.svg" class="burger" />
+    PRESENTERS</button>
+  <button routerLink="/jobs" mat-menu-item>
+    <img src="../../assets/brand/icons/jobs_icon.svg" class="burger" />
+    JOBS</button>
+  <button routerLink="/print" mat-menu-item>
+    <img src="../../assets/brand/icons/register_icon.svg" class="burger" />
+    REGISTER</button>
+
+  <div *ngIf="isLoggedIn">
+    <button routerLink="/chat" mat-menu-item>
+      <img src="../../assets/brand/icons/register_icon.svg" class="burger" />
+      CHAT</button>
+  </div>
+
+  <div *ngIf="isEmployer">
+    <button routerLink="/employer" mat-menu-item>
+      <img src="../../assets/brand/icons/register_icon.svg" class="burger" />
+      CANDIDATES</button>
+  </div>
+  <div>
+    <button (click)="clearAppData()" mat-menu-item>
+      <img src="../../assets/brand/icons/login_icon.svg" class="burger" />
+      REFRESH APP DATA</button>
+  </div>
+  <div *ngIf="isLoggedIn">
+    <button routerLink="/login" mat-menu-item>
+      <img src="../../assets/brand/icons/login_icon.svg" class="burger" />
+      LOG OUT</button>
+  </div>
+
+  <div *ngIf="!isLoggedIn">
+    <button routerLink="/login" mat-menu-item>
+      <img src="../../assets/brand/icons/login_icon.svg" class="burger" />
+      LOG IN</button>
+  </div>
+
+</mat-menu>

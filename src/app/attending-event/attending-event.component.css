@@ -1,0 +1,59 @@
+
+.right-div {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width:300px;
+    text-align: left;
+    padding: 20px;
+    border-radius: 3px;
+    margin: 2px;
+    margin: 0 auto;
+    background-color: #D3D3D3;
+  }
+  
+  .center-img {
+    width:280px;
+    margin: 0 auto;
+  }
+
+  li {
+    display: inline;
+    padding: 0px;
+    margin-right: 3px;
+}
+ul{
+  margin-left: 0;
+  padding: 0px;
+}
+
+.image {
+    height: 150px; /* adjust as needed */
+    min-height: 150px;
+    object-fit: contain;
+  }
+
+  .speaker{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    padding: 5px;
+    width: 240px;
+    cursor: pointer;
+    background-color: #D3D3D3;
+  }
+  .mat-card{
+    width: 250px;
+    min-height: 100%;
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .platnium{
+    background-color: #d3e2f0;
+  }

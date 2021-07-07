@@ -1,0 +1,78 @@
+
+.right-div {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width:300px;
+    text-align: left;
+    padding: 20px;
+    border-radius: 3px;
+    margin: 2px;
+    margin: 0 auto;
+    background-color: #D3D3D3;
+  }
+  
+  .center-img {
+    width:360px;
+    margin: 0 auto;
+  }
+
+  li {
+    display: inline;
+    padding: 0px;
+    margin-right: 3px;
+}
+ul{
+  margin-left: 0;
+  padding: 0px;
+  margin-bottom: 5px;
+}
+
+.image {
+    height: 150px; /* adjust as needed */
+    min-height: 150px;
+    object-fit: contain;
+  }
+
+  .speaker{
+    border-radius: 5px;
+    margin-bottom: 8px;
+    padding: 5px;
+    width: 220px;
+    cursor: pointer;
+    background-color: #FDC581;
+  }
+  .center-img {
+    width:280px;
+    margin: 0 auto;
+  }
+  .product{
+    /*margin-left: 16px;*/
+    min-width: 160px;
+    max-width: 240px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px; /* same as fxLayoutGap for even distribution */
+  }
+  .aligner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .mat-card{
+    width: 250px;
+  }
+  .cname{
+    color:#F26522;
+  }
+  button{
+    margin:10px;
+  }
+
+  .content {
+    padding: 16px;
+  }
+

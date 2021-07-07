@@ -1,0 +1,27 @@
+<div>
+  <div class="aligner">
+    <mat-card [ngStyle]="getCardStyle()">
+      <mat-card-header>
+        <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{ user.pic_url }}" alt="pic">
+        <mat-card-title>Friends {{numberOfFriends}}</mat-card-title>
+        <mat-card-subtitle>Your friends</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content *ngFor="let friend of friends">
+        <div class="aligner">
+          <div class="friend">
+            <mat-icon (click)="navToChat()">duo</mat-icon>
+            <b>{{friend.friend}}</b>&nbsp; {{friend.sign_up_date | dateFormat}}
+          </div>
+        </div>
+
+      </mat-card-content>
+      <mat-card-actions>
+
+        <!--    <button mat-raised-button color="primary" (click)="navToScan()">Scan A Freind</button>   -->
+        <div class="action" (click)="navToScan()">&nbsp; Scan A Freind &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg"></i> &nbsp;
+        </div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

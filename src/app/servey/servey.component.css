@@ -1,0 +1,43 @@
+.action{
+    max-width: 120px
+}
+    
+.input{
+    background-color: whitesmoke;
+}
+.icon{
+    height:20px;
+    width: auto;
+}
+.star {
+    font-size: 1.5rem;
+    color: lightblue;
+  }
+  .filled {
+    color:yellow;
+  }
+  .bad {
+    color: yellow;
+  }
+  .filled.bad {
+    color: yellow;
+  }
+  .mat-card{
+      width:100%;
+      
+  }
+  .mat-card-content{
+    background-color: #fee0bf;
+  }
+  .notes{
+      width: auto;
+  }
+  textarea{
+      min-width :100%;
+  }
+  .mat-dialog-content{
+      padding: 0px;
+  }
+  .mat-dialog-container{
+      max-width: 60px;
+  }

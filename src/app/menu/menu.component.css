@@ -1,0 +1,27 @@
+.burger{
+    max-height:40px;
+    max-width:40px;
+    transform: translateY(-5px);
+}
+.menu{
+    background-color: #546873;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    border-radius: 0px;
+    width:380px;
+}
+.mat-menu-item{
+    background-color: #546873;
+    border-bottom: solid 1px #d3e2f0;
+    color: white;
+    width: 420px;
+    font-family: 'core medium' !important;
+}
+.mat-menu-item:hover{
+    color: #546873;
+}
+div.mat-menu-content{
+    color: #546873;
+    
+}
+

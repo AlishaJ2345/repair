@@ -1,0 +1,200 @@
+<div class="aligner" *ngIf="state == 'login'">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>{{legend}}</mat-card-title>
+    </mat-card-header>
+    <form>
+
+      <div *ngIf="!isLoggedIn">
+
+        <div class="back-light">
+
+          <div class="labelchar">Email</div>
+          <input type="text" placeholder="Email" [(ngModel)]="email" name="email" required>
+          <div class="alignend">{{ isValidEmail }}</div>
+
+          <div class="labelchar">Password</div>
+          <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+          <div class="alignend">{{ isValidPass }}</div>
+
+        </div>
+
+      </div>
+
+      <div *ngIf="isLoggedIn">
+        <div class="back-light">
+          <div class="lock">
+            <img src="../../assets/images/lock.png">
+          </div>
+        </div>
+      </div>
+
+      <br>
+
+      <div *ngIf="loginaction">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+
+      <mat-card-actions>
+
+        <!--  <button mat-raised-button *ngIf="!isLoggedIn" (click)="login()" color="primary">Login</button>  -->
+
+        <div class="action" *ngIf="!isLoggedIn" (click)="login()">&nbsp; Login &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+        <!--   <button mat-raised-button *ngIf="isLoggedIn" (click)="logout()" color="primary">Logout</button>  -->
+
+        <div class="action" *ngIf="isLoggedIn" (click)="logout()">&nbsp; Logout &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+        <!--    <button mat-raised-button routerLink="/home">Home</button>  -->
+
+        <div class="action" routerLink="/home">&nbsp; Home &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+
+      </mat-card-actions>
+
+      <mat-card-actions>
+        <!--    <button mat-raised-button (click)="state = 'register'" color="accent">Sign up</button>  -->
+        <div class="action" (click)="gotoRegister()">&nbsp; Sign up &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+        <!--    <button mat-raised-button (click)="state = 'reset'" color="accent">Lost Your Password?</button>  -->
+        <div class="action" (click)="state = 'reset'">&nbsp; Lost Your Password? &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+      </mat-card-actions>
+
+      <br><br>
+    </form>
+  </mat-card>
+</div>
+
+<div class="aligner" *ngIf="state == 'register'">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>Register</mat-card-title>
+    </mat-card-header>
+    <form>
+
+      <div class="back-light">
+
+        <div class="labelchar">Select Account Type</div>
+
+        <mat-select [(value)]="selected" required>
+          <mat-option value="user">Student</mat-option>
+          <mat-option value="employer">Employer</mat-option>
+        </mat-select>
+
+        <div class="labelchar">Student ID</div>
+        <input type="text" placeholder="Student ID" [(ngModel)]="student_id" name="student_id" required>
+
+        <div class="labelchar">User Name</div>
+        <input type="text" placeholder="User Name" [(ngModel)]="name" name="name" required>
+
+        <div class="labelchar">Email</div>
+        <input type="text" placeholder="Email" [(ngModel)]="email" name="email" required>
+
+        <div class="labelchar">Password</div>
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required>
+
+        <div class="labelchar">Password Again</div>
+        <input type="password" (keyup)="checkRegPassMatch()" placeholder="Password Again" [(ngModel)]="repassword" name="repassword"
+          required>
+
+      </div>
+
+
+      <div *ngIf="noMatch">
+        <span class="warning">Passwords do not match</span>
+      </div>
+
+      <div *ngIf="registeraction">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <mat-card-actions>
+
+        <div class="action" (click)="register()">&nbsp; Register &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+
+        <div class="action" (click)="state = 'login'">&nbsp; Cancel &nbsp;
+          <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+        </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+<div class="aligner" *ngIf="state == 'reset'">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>Email Password Reset</mat-card-title>
+    </mat-card-header>
+    <form>
+      <div class="back-light">
+        <div class="labelchar">Email</div>
+        <input type="text" placeholder="Email" [(ngModel)]="email" name="email" required>
+      </div>
+      <br>
+
+      <div *ngIf="resetaction">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <mat-card-actions>
+
+        <div class="action" (click)="sendPasswordEmail()">&nbsp; Send Reset Email &nbsp;
+            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+          </div>
+
+        <div class="action" (click)="state = 'login'">&nbsp; Cancel &nbsp;
+            <i><img class="icon" src="../../assets/brand/icons/fa.svg" /></i> &nbsp;
+          </div>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>
+
+<div class="login" *ngIf="state == 'change'">
+  <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+    <mat-card-header>
+      <mat-card-title>Change Password</mat-card-title>
+    </mat-card-header>
+    <form>
+
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="Current Password" type="password" [(ngModel)]="cPassword" name="cPassword"
+          required>
+        <mat-hint align="end">Current Password</mat-hint>
+      </mat-form-field>
+      <br>
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="New Password" type="password" [(ngModel)]="c2Password" name="c2password" required>
+        <mat-hint align="end">6 Chars minimum</mat-hint>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input matInput (keyup)="checkPassMatch()" placeholder="New Password again" type="password" [(ngModel)]="c3Password"
+          name="c3password" required>
+        <mat-hint align="end">Must Match Above</mat-hint>
+      </mat-form-field>
+
+      <div *ngIf="noMatch">
+        <span class="warning">passwords do not match</span>
+      </div>
+
+      <div *ngIf="changeaction">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="changePassword()">Set New Pasword</button>
+        <button mat-raised-button color="accent" class="center" (click)="state = 'login'">Back</button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,52 @@
+.right-div {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width:300px;
+    text-align: left;
+    padding: 10px;
+    background-color: #ddd;
+    border-radius: 3px;
+    margin: 5px;
+    border: 1px solid black;
+    margin: 0 auto;
+  }
+  .center-img {
+    width: 300px;
+    margin: 0 auto;
+  }
+  .parent{
+    width:300px;
+    margin: 0 auto;
+  }
+  .profilePic {
+    max-width: 40px;
+    max-height: 40px;
+  }
+  .friend{
+    max-width: 400px;
+      border: 1px black solid;
+      border-radius: 5px;
+      background-color: #ddd;
+      padding: 5px;
+      width:auto;
+      color: #F07D00;
+      cursor: pointer;
+  }
+.mat-card{
+  width: 260px;
+}
+.aligner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon{
+  height:20px;
+  width: auto;
+}
+.action{
+  max-width: 220px;
+}

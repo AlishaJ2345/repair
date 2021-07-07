@@ -1,0 +1,19 @@
+<div class="form">
+  <div class="aligner" *ngFor="let map of maps; let i = index;">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="getCardStyle()">
+      <mat-card-header>
+        <mat-card-title>{{map.location}}</mat-card-title>
+
+      </mat-card-header>
+      <div class="aligner">
+          <img class="image" (click)="fullScreenPic(i)" onError="this.src='../../assets/pics/aut.gif'"
+          src="{{map.map_url}}" alt="map pic" [ngStyle]="getImageStyle()"/>
+      </div>
+
+      <br>
+    </mat-card>
+    <br>
+  </div>
+</div>
+
+

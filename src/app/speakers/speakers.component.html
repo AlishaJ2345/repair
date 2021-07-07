@@ -1,0 +1,62 @@
+
+<!-- attending event layout-->
+<div class="form">
+  <div class="aligner">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" [ngStyle]="cardStyle">
+      <mat-card-header>
+        <mat-card-title>Presenters</mat-card-title>
+
+      </mat-card-header>
+
+      <mat-card-content *ngFor="let speaker of speakers; let i = index;">
+        <h3>{{ speaker?.company }} </h3>
+        <mat-card-subtitle>Starts: {{ speaker?.start_time }} Room: {{speaker?.room}} Level: {{speaker?.level}}</mat-card-subtitle>
+        <div class="d-flex flex-row flex-wrap">
+          <div class="p-2">
+            <img src="{{speaker?.logo_url}}" style="width:100px;height:auto;" alt="company logo" /><br>
+          </div>
+          <div class="p-2">
+            <ul>
+              <div>
+
+                <div class="back-light" [ngStyle]="speakerStyle">
+                  {{job?.description}}<br>
+                  <h3>{{ speaker?.name }}</h3>
+                  {{ speaker?.job_title }}<br>
+
+                  <div *ngIf="speaker?.sub_heading != ''">
+                    {{ sub_heading }}
+                  </div>
+
+                  <div *ngIf="speaker?.key_messages != ''">
+                    {{ speaker?.key_messages }}
+                  </div>
+
+                  <div *ngIf="speaker?.bio != ''">
+                    {{ speaker?.bio }}
+                  </div>
+
+              <!--    <div *ngIf="speaker?.profile != ''">
+                    {{ speaker?.profile }}
+                  </div> -->
+          <!--        <div *ngIf="speaker?.profile != ''">
+                    <a href="{{ speaker?.profile }}" target="_blank" *ngIf="speaker?.profile != ''">Grad Programme</a><br>
+                  </div>
+                  
+                  <div *ngIf="speaker?.link != ''">
+                    <a href="{{ speaker?.link }}" target="_blank" *ngIf="speaker?.link != ''">LinkedIn</a>
+                  </div>   -->
+
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </mat-card-content>
+
+    </mat-card>
+    <br>
+  </div>
+</div>
+
+<br>

@@ -1,0 +1,138 @@
+/* You can add global styles to this file, and also import other style files */
+/*@import "../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css";*/
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+@import "~ag-grid-community/dist/styles/ag-grid.css";
+@import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+@font-face {
+    font-family: core;
+    src: url("assets/brand/fonts/Helia-Core.otf") format("opentype");
+}
+
+@font-face {
+    font-family: core book;
+    src: url("assets/brand/fonts/Helia-Core-Book.otf") format("opentype");
+}
+
+@font-face {
+    font-family: core bold;
+    src: url("assets/brand/fonts/Helia-Core-Bold.otf") format("opentype");
+}
+
+@font-face {
+    font-family: core thin;
+    src: url("assets/brand/fonts/Helia-Core-Thin.otf") format("opentype");
+}
+
+@font-face {
+    font-family: core medium;
+    src: url("assets/brand/fonts/Helia-Core-Medium.otf") format("opentype");
+}
+
+@font-face {
+    font-family: core black;
+    src: url("assets/brand/fonts/Helia-Core-Black.otf") format("opentype");
+}
+
+body, html{
+    height: 100%;
+    width: auto;
+    margin: 0;
+    background-color: #F07D00 !important;
+    scroll-behavior: smooth;
+    font-family: 'core book' !important;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: core book;
+}
+
+h3{
+    text-align: left;
+    font-family: 'core thin' !important;
+    color: #F07D00;
+}
+
+.product{
+    /*margin-left: 16px;*/
+    min-width: 160px;
+    max-width: 340px;
+    height: auto;
+    text-align: center;
+    margin-bottom: 20px; /* same as fxLayoutGap for even distribution */
+  }
+
+.footer { 
+    height:100px; 
+    position:absolute; 
+    left:0; 
+    bottom:0; 
+}
+
+.mat-card{
+    height:auto;
+}
+
+.mat-card-content{
+    font-family: 'core book' !important;
+}
+.mat-card-title{
+    font-family: 'core bold' !important;
+    color: #F07D00;
+   /* align-content: flex-end; */
+    text-align: end;
+}
+.mat-card-subtitle{
+    font-family: 'core book' !important;
+    color: #F07D00;
+}
+.mat-card-header{
+    min-height: 60px;
+    text-align: end;
+}
+.mat-card-header-text{
+    width: 100% !important;
+}
+
+
+h2{
+    font-family: 'core book' !important;
+}
+p{
+    font-family: 'core book' !important;
+    text-align: left !important;
+    padding: 10px;
+}
+.fieldset{
+    height: 100%;
+}
+
+.back-light{
+    background-color: #fee0bf;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.action{
+    height:40px;
+    padding-top: 10px;
+    padding-left: 5px;
+ /*   padding-right: 5px;  */
+    margin-bottom: 5px;
+    width:auto;
+    background-color: #f2673c;
+    text-align: center;
+    font-family: 'core bold' !important;
+    color:white;
+    line-height: 20px;
+    border-radius: 20px 20px 20px 20px;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

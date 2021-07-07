@@ -1,0 +1,53 @@
+<hr>
+<div class="form">
+
+  <div class="center-img">
+    <label>Title Contains</label>
+    <input matInput class="custom" [(ngModel)]="searchKey" placeholder="Search" autocomplete="off">
+    <button mat-button (click)="onSearchClear()" matSuffix mat-icon-button aria-label="clear" *ngIf="searchKey">
+      <mat-icon><img src="../../assets/images/x.png" class="close"></mat-icon>
+    </button>
+  </div>
+
+</div>
+<hr>
+
+<div *ngFor="let post of filterFunction(posts);let i = index;">
+  <div class="center-img">
+    <mat-card fxFlex="0 1 calc(20% - 20px)" class="product">
+      <mat-card-header (click)="toggeShowPic(i)">
+
+        <img mat-card-avatar style="height:40;width:40;" class="profilePic" src="{{post.picurl}}" alt="pic">
+        <mat-card-title>{{post.event_name}}</mat-card-title>
+        <mat-card-subtitle>{{ post.start_date | dateFormat }}</mat-card-subtitle>
+
+      </mat-card-header>
+      <div [hidden]="post.isvisable" style="color:red;">
+        <div class="right-div">
+          <!-- [style.background-color]="withinHours(post.start_date)">-->
+
+          <mat-card-header>
+            <mat-card-subtitle>{{ fromNow(post.start_date) }}</mat-card-subtitle>
+            <mat-card-subtitle>Location: {{ post.location }}</mat-card-subtitle>
+            <mat-card-subtitle>Contact: {{ post.contact_email}}</mat-card-subtitle>
+            <mat-card-subtitle>Content: {{ post.content }} </mat-card-subtitle>
+          </mat-card-header>
+
+        </div>
+
+        <mat-card-content>
+
+          <img src="{{post.picurl}}" style="height:auto;max-height:200px;width:320px;" id="eventpic" alt="Upload your profile pic">
+
+        </mat-card-content>
+
+        <mat-card-actions align="end">
+          <button mat-raised-button color="primary" (click)="gotoPrint(post.eid, post.event_name)">Print Entry Label</button>
+          <button mat-raised-button color="primary" (click)="moreInfo(post.eid, post.event_name)">More Info</button>
+        </mat-card-actions>
+      </div>
+
+
+    </mat-card>
+  </div>
+</div>

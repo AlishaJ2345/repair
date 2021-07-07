@@ -1,0 +1,237 @@
+<mat-card class="example-card">
+
+  <!--<mat-radio-group aria-label="view" [(ngModel)]="value" (change)="radioChange($event)">
+    <mat-radio-button [checked]="true" value="1">Chat &nbsp; </mat-radio-button>
+    <mat-radio-button value="2">Friends &nbsp; </mat-radio-button>
+    <mat-radio-button value="3">Video&nbsp; </mat-radio-button>
+  </mat-radio-group>    -->
+
+  <mat-tab-group mat-align-tabs="center" [selectedIndex]="tabSelected" [dynamicHeight]='true'>
+    <mat-tab label="Chat">
+
+      <div class="contain">
+        <div *ngIf="!privateChat; else chat">
+          <div id="container">
+            <div id="mainWrapper">
+              <div id="chatWrapper">
+                <!--  <h5>{{ currentRoom }}</h5>  -->
+                <div class="aligner">
+                  <select (change)="onSelectRoom($event)">
+                    <option *ngFor="let room of rooms" [value]="room">{{room}}</option>
+                  </select>
+                </div>
+                <div id="chatWindow" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                  <div *ngFor="let mess of messages;" id="mess">
+                    <div *ngIf="mess.room == currentRoom">
+                      <div class="mess" [class.me]="isMyMessage(mess.user)" (click)="setPrivateName(mess.user)">
+                        <mat-icon *ngIf="!isMyMessage(mess.user)" (click)="sendVid(mess.user)">duo</mat-icon>{{
+                        mess.user
+                        }}:{{ mess.msg }}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="aligner">
+                  <form id="messageForm" (keyup.enter)="sendMessage()">
+                    <div class="inputBar">
+                      <textarea [(ngModel)]="message" name="message" type="text" cols="60" rows="3" id="message"
+                        placeholder="Say something...."></textarea>
+                      {{ senderror }}
+                    </div>
+                    <div class="btn-group" role="group">
+                      <button type="button" class="btn btn-secondary" (click)="sendMessage()">Send</button>
+                      <button type="button" class="btn btn-secondary" (click)="retreivePrivateMsg()">Private Messages</button>
+                      <button type="button" class="btn btn-secondary" (click)="allPrivateChat()" [class.noPmess]="numberOfPM === 0">
+                        {{ numberOfPM }} PM's</button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+              <div id="mainWrapper">
+                <div id="userWrapper">
+                  <div id="users">
+                    <div>
+                      <mat-icon>import_export</mat-icon>Everyone in the room
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <ng-template #chat>
+          <div id="container">
+            <div id="mainWrapper">
+              <div id="chatWrapper">
+
+                <div class="select-spacer"></div>
+                <div id="chatWindow" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+                  <h3>Private Message</h3>
+                  <div *ngFor="let msg of pMessages;" id="mess">
+                    <!-- [class.videochat]="true" -->
+
+                    <!--  video message -->
+                    <div *ngIf="msg.msg === 'V' || msg.msg === 'S'">
+
+                      <div *ngIf="msg.msg === 'V';">
+
+                        <div class="mess" (click)="startVideoChat(msg.from, 'V')" (click)="removeMsg(msg)" (click)="swapPrivateRecipiant(msg.from)"
+                          [class.me]="isMyPMessage(msg.from)">
+                          <i class="rec"></i>&nbsp;{{ msg.from }} Video Chat?:&nbsp;&nbsp;&nbsp;<i class="decline"
+                            (click)="decline(msg)"></i></div>
+                        <div></div>
+                      </div>
+                      <!--  audio message  -->
+                      <div *ngIf="msg.msg === 'S';">
+
+                        <div class="mess" (click)="startVideoChat(msg.from, 'S')" (click)="removeMsg(msg)" (click)="swapPrivateRecipiant(msg.from)"
+                          [class.me]="isMyPMessage(msg.from)">
+                          <i class="audio"></i>&nbsp;{{ msg.from }} Voice Chat?:&nbsp;&nbsp;&nbsp;<i class="decline"
+                            (click)="decline(msg)"></i></div>
+                        <div></div>
+                      </div>
+                    </div>
+                    <div *ngIf="msg.msg != 'V' && msg.msg != 'S'">
+                        <div class="mess" (click)="swapPrivateRecipiant(msg.from)" [class.me]="isMyPMessage(msg.from)">
+                            <mat-icon>mail_outline</mat-icon>{{ msg.from }}:{{ msg.msg }}
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+                <form id="messageForm" (keyup.enter)="sendPrivateMessage()">
+                  <div class="inputBar">
+                    <textarea [(ngModel)]="message" name="message" type="text" cols="60" rows="3" id="message"
+                      placeholder="Say something...."> {{ senderror }}</textarea>
+                  </div>
+                  <div class="btn-group" role="group">
+                    <button type="button" class="btn btn-secondary" (click)="sendPrivateMessage()">Send</button>
+                    <button type="button" class="btn btn-secondary" (click)="toNonPrivate()">Back</button>
+                    <button type="button" class="btn btn-secondary" (click)="clearPrivate()">Clear</button>
+                    <button type="button" class="btn btn-secondary" (click)="makeFriend()">Friend</button>
+                  </div>
+                </form>
+              </div>
+              <div id="mainWrapper">
+                <div id="userWrapper">
+                  <div id="users">
+                    <div>
+                      <mat-icon>import_export</mat-icon>Private to:{{ msgTo }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+
+    </mat-tab>
+    <mat-tab label="Contacts">
+
+      <div class="aligner">
+        <div id="users" [class.off]="videoIsOn">
+          <!--start of users-->
+          <div id="mainWrapper">
+            <div>
+              <div id="numberUser">
+                {{ number }} Online
+              </div>
+              <!--  <div class="msgbar">
+                <label style="color:black;">My Computer</label>
+                <div class="namebanner">
+                  <h3>{{name}}</h3>
+                  <div class="flex-container">
+                    <div *ngIf="showLocalAvailabledeviceVideo()">
+  
+                      <i class="cam flex-item"></i>
+                      <label class="microLabel">Video</label>
+                    </div>
+                    <div *ngIf="showLocalAvailabledeviceAudio()">
+  
+                      <i class="speaker flex-item"></i>
+                      <label class="microLabel">Voice</label>
+                    </div>
+                  </div>
+                </div>
+              </div>  
+              <br> -->
+
+              <div>
+                <div class="flex-container">
+                  <!-- <div class="retreive" (click)="toggleFavourites()">{{showing}}</div>  -->
+
+                  <div>
+                    <div class="top-left">
+                      <label style="color:black;">Room</label>
+                    </div>
+                    <div class="bottom">
+                      <div>
+                        <div *ngFor="let user of users;">
+                          <div *ngIf="name != user.name">
+                            <div (mouseenter)="getDevices(user.name)">
+                              <div class="msg" (click)="setPrivateName(user.name)">{{ user.name }}</div>
+                              <div class="flex-container">
+                                <div *ngIf="user.video">
+                                  <i class="cam flex-item" (click)="setPrivateName(user.name)" (click)="videoRequest(user.name, 'V')"></i>
+                                  <label class="microLabel">Video</label>
+                                </div>
+                                <div *ngIf="user.audio">
+                                  <i class="speaker flex-item" (click)="setPrivateName(user.name)" (click)="videoRequest(user.name, 'S')"></i>
+                                  <label class="microLabel">Voice</label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="top-right">
+                      <label style="color:black;">Friends</label>
+                    </div>
+                    <div class="bottom">
+                      <div>
+                        <div>
+                          <div *ngFor="let friend of friends; let i = index;">
+                            <div *ngIf="name != friend.name">
+                              <div>
+                                <div class="msg" [class.online]="friend.online" (click)="setPrivateName(friend.name)">{{
+                                  friend.name }}
+                                  <i class="cam" (click)="setPrivateName(friend.name)" (click)="videoRequest()"></i>
+                                  <label class="microLabel">Video</label></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </mat-tab>
+    <mat-tab label="Video">
+
+      <!--  <div [style.display]="selected === 'CALLS'?'inherit' : 'none'">   -->
+      <div id="video">
+        <div>
+          <app-webrtc [request]="makerequest" [dev]="negotiatedDevices" (availableDevices)="setAvailableDevices($event)"
+            (callStop)="setCallState($event)"></app-webrtc>
+        </div>
+      </div>
+      <!--  </div>   -->
+
+    </mat-tab>
+  </mat-tab-group>
+
+</mat-card>

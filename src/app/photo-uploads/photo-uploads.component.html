@@ -1,0 +1,54 @@
+<div class="center-img">
+  <div *ngIf="source == ''">
+    <img src="{{ key.pic_url }}" style="height:auto;width:220px;" alt="Upload your profile pic">
+  </div>
+
+  <button mat-raised-button (click)="source = 'selfie'" (click)="resetSelfie()">Selfie</button>
+  <button mat-raised-button (click)="source = 'file'" (click)="resetFile()">File</button>
+</div>
+
+<div *ngIf="source == 'selfie'">
+  <app-selfie (emiturl)="setSelfieFile($event)">selfie</app-selfie>
+</div>
+<br>
+<div *ngIf="source == 'file'">
+  <div *ngIf="complete">
+    <div *ngIf="fileInput">
+      <br>
+      <label>Choose File</label>
+      <input type="file" (change)="fileChangeEvent($event)" />
+      <br>
+      <div *ngIf="cropFileLoading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <hr>
+    </div>
+    <div class="cropper">
+      <label>Crop Image</label>
+      <image-cropper style="height:auto;" [imageFileChanged]="imgFile" [imageChangedEvent]="imageChangedEvent"
+        [maintainAspectRatio]="true" [aspectRatio]="3 / 4" [resizeToWidth]="300" format="png" (imageCropped)="imageCropped($event)"
+        (imageLoaded)="imageLoaded()" (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+      <div *ngIf="showUpLoadButton" class="center-img">
+        <img [src]="Image" class="croppedImg" />
+        <br>
+        Max: 400 KB<br>
+        Crop: {{ croppedImage.size / 1000}} KB<br>
+        <div *ngIf="showUpLoadButton; else tobig">
+          File Size is OK
+        </div>
+        <ng-template #tobig>
+          File Size is To Large
+        </ng-template>
+        <button mat-raised-button color="primary" (click)="uploadEventPic()" *ngIf="showUpLoadButton"> upload file
+        </button>
+      </div>
+      <div *ngIf="profileload">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+      <br>
+
+    </div>
+  </div>
+
+</div>
